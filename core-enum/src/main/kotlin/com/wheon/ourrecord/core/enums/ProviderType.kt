@@ -1,0 +1,5 @@
+package com.wheon.ourrecord.core.enums
+
+enum class ProviderType {
+    KAKAO,
+}

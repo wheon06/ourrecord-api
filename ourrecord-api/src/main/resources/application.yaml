@@ -1,3 +1,5 @@
 spring:
-  profiles:
-    include: client-kakao.yaml
+  config:
+    import:
+      - client-kakao.yaml
+      - db-core.yaml

@@ -3,7 +3,10 @@ rootProject.name = "ourrecord"
 include(
     ":auth",
     ":ourrecord-api",
-    ":clients:client-kakao"
+    ":core-enum",
+    ":clients:client-kakao",
+    ":storage:db-core",
+    ":storage:db-s3"
 )
 
 pluginManagement {

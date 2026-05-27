@@ -1,11 +1,11 @@
 package com.wheon.ourrecord.auth.api.support.response
 
-import com.wheon.ourrecord.api.support.error.ErrorMessage
-import com.wheon.ourrecord.api.support.error.ErrorType
+import com.wheon.ourrecord.auth.api.support.error.AuthErrorMessage
+import com.wheon.ourrecord.auth.api.support.error.AuthErrorType
 
 data class AuthApiResponse<T> private constructor(
     val data: T? = null,
-    val error: ErrorMessage? = null,
+    val error: AuthErrorMessage? = null,
 ) {
     companion object {
         fun success(): AuthApiResponse<Any> {
@@ -16,8 +16,8 @@ data class AuthApiResponse<T> private constructor(
             return AuthApiResponse(data)
         }
 
-        fun <S> error(errorType: ErrorType): AuthApiResponse<S> {
-            return AuthApiResponse(null, ErrorMessage(errorType))
+        fun <S> error(errorType: AuthErrorType): AuthApiResponse<S> {
+            return AuthApiResponse(null, AuthErrorMessage(errorType))
         }
     }
 }
