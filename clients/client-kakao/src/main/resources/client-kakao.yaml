@@ -1,0 +1,7 @@
+kakao:
+  base-url: https://kauth.kakao.com
+  client-id: ${KAKAO_CLIENT_ID}
+  login:
+    endpoint: /oauth/authorize
+    redirect-uri: ${KAKAO_LOGIN_REDIRECT_URI}
+    client-secret: ${KAKAO_LOGIN_CLIENT_SECRET}
