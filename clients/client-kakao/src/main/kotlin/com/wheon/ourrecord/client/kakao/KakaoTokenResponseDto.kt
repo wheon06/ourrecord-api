@@ -1,6 +1,7 @@
 package com.wheon.ourrecord.client.kakao
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.wheon.ourrecord.client.kakao.model.KakaoClientTokenResult
 
 internal data class KakaoTokenResponseDto(
     @param:JsonProperty("token_type")
@@ -13,4 +14,8 @@ internal data class KakaoTokenResponseDto(
     val refreshToken: String,
     @param:JsonProperty("refresh_token_expires_in")
     val refreshTokenExpiresIn: Int,
-)
+) {
+    fun toResult(): KakaoClientTokenResult {
+        return KakaoClientTokenResult.of(this)
+    }
+}

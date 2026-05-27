@@ -9,4 +9,8 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
+
+    implementation(project(":core-enum"))
+    implementation(project(":storage:db-core"))
+    implementation(project(":clients:client-kakao"))
 }
