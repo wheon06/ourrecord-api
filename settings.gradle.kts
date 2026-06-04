@@ -1,7 +1,6 @@
 rootProject.name = "ourrecord"
 
 include(
-    ":auth",
     ":ourrecord-api",
     ":core-enum",
     ":clients:client-kakao",

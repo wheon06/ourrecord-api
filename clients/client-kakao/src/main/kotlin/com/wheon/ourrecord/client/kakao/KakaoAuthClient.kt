@@ -5,14 +5,14 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class KakaoClient internal constructor(
+class KakaoAuthClient internal constructor(
     @param:Value($$"${kakao.client-id}") private val clientId: String,
     @param:Value($$"${kakao.login.redirect-uri}") private val redirectUri: String,
     @param:Value($$"${kakao.login.client-secret}") private val clientSecret: String,
-    private val kakaoApi: KakaoApi,
+    private val kakaoAuthApi: KakaoAuthApi,
 ) {
     fun getToken(code: String): KakaoClientTokenResult {
-        return kakaoApi.getToken(
+        return kakaoAuthApi.getToken(
             clientId = clientId,
             redirectUri = redirectUri,
             code = code,

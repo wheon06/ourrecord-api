@@ -16,6 +16,6 @@ class InvitationEntity(
     val codeHash: String,
     val createdByUserId: Long,
     val acceptedByUserId: Long?,
-    val expiredAt: LocalDateTime,
+    val expiresAt: LocalDateTime,
     val acceptedAt: LocalDateTime?,
 ) : BaseEntity()

@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.storage.db.core
 
-import com.wheon.ourrecord.core.enums.ProviderType
+import com.wheon.ourrecord.core.enums.SocialProviderType
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -12,8 +12,7 @@ import java.time.LocalDateTime
 class UserAuthIdentityEntity(
     val userId: Long,
     @Enumerated(EnumType.STRING)
-    val provider: ProviderType,
+    val provider: SocialProviderType,
     val providerUserId: String,
-    val providerProfileJson: String,
     val linkedAt: LocalDateTime,
 ) : BaseIdEntity()

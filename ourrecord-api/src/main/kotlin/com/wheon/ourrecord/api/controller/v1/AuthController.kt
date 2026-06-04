@@ -1,16 +1,37 @@
 package com.wheon.ourrecord.api.controller.v1
 
+import com.wheon.ourrecord.api.controller.v1.request.KakaoLoginRequest
+import com.wheon.ourrecord.api.controller.v1.response.LoginResponse
+import com.wheon.ourrecord.api.support.auth.LoginService
 import com.wheon.ourrecord.api.support.response.ApiResponse
 import com.wheon.ourrecord.domain.User
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
-class AuthController {
+@RestController
+class AuthController(
+    private val loginService: LoginService,
+) {
     @PostMapping("/v1/auth/kakao")
     fun loginWithKakao(
-        @RequestParam code: String,
-    ): ApiResponse<Any> {
-        return ApiResponse.success()
+        @RequestBody request: KakaoLoginRequest,
+    ): ApiResponse<LoginResponse> {
+        val result = loginService.loginWithKakao(
+            code = request.code,
+            deviceInstallId = request.device.installId,
+            devicePlatform = request.device.platform,
+            devicePushToken = request.device.pushToken,
+            deviceAppVersion = request.device.appVersion,
+        )
+        return ApiResponse.success(
+            LoginResponse(
+                userId = result.userId,
+                accessToken = result.accessToken,
+                refreshToken = result.refreshToken,
+            ),
+        )
     }
 
     @PostMapping("/v1/auth/refresh")

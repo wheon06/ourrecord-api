@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
-@RestControllerAdvice(basePackages = ["com.wheon.ourrecord.ourrecord-api"])
+@RestControllerAdvice(basePackages = ["com.wheon.ourrecord"])
 class ApiControllerAdvice {
     private val log = LoggerFactory.getLogger(this::class.java)
 

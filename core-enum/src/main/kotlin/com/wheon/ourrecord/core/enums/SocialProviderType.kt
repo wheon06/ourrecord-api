@@ -1,5 +1,5 @@
 package com.wheon.ourrecord.core.enums
 
-enum class ProviderType {
+enum class SocialProviderType {
     KAKAO,
 }

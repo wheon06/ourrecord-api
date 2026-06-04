@@ -12,5 +12,4 @@ class UserEntity(
     @Enumerated(EnumType.STRING)
     val state: UserState,
     val nickname: String,
-    val profileImageUrl: String,
 ) : BaseEntity()

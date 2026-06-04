@@ -1,0 +1,21 @@
+package com.wheon.ourrecord.client.kakao
+
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.wheon.ourrecord.client.kakao.model.KakaoClientProfileResult
+
+data class KakaoProfileResponseDto(
+    val id: String,
+    @param:JsonProperty("kakao_account")
+    val kakaoAccount: KakaoAccount,
+) {
+    fun toResult(): KakaoClientProfileResult {
+        return KakaoClientProfileResult(
+            id = id,
+            name = kakaoAccount.name,
+        )
+    }
+
+    data class KakaoAccount(
+        val name: String,
+    )
+}

@@ -3,3 +3,4 @@ spring:
     import:
       - client-kakao.yaml
       - db-core.yaml
+      - auth.yaml
