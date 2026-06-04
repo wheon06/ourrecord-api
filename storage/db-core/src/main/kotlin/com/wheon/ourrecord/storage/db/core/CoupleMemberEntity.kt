@@ -1,13 +1,11 @@
 package com.wheon.ourrecord.storage.db.core
 
 import com.wheon.ourrecord.core.enums.CoupleMemberRole
-import com.wheon.ourrecord.core.enums.CoupleMemberState
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.Index
 import jakarta.persistence.Table
-import java.time.LocalDateTime
 
 @Entity
 @Table(
@@ -20,10 +18,14 @@ class CoupleMemberEntity(
     val coupleId: Long,
     val userId: Long,
     @Enumerated(EnumType.STRING)
-    val state: CoupleMemberState,
-    @Enumerated(EnumType.STRING)
     val role: CoupleMemberRole,
     val displayName: String,
-    val emoji: String,
-    val leftAt: LocalDateTime?,
-) : BaseEntity()
+    emoji: String,
+) : BaseEntity() {
+    var emoji: String = emoji
+        protected set
+
+    fun updateEmoji(newEmoji: String) {
+        this.emoji = newEmoji
+    }
+}

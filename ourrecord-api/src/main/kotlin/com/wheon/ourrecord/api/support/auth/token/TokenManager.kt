@@ -1,7 +1,11 @@
 package com.wheon.ourrecord.api.support.auth.token
 
+import com.wheon.ourrecord.api.support.error.ApiException
+import com.wheon.ourrecord.api.support.error.ErrorType
 import io.jsonwebtoken.Claims
+import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.MalformedJwtException
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.springframework.stereotype.Component
@@ -53,10 +57,16 @@ class TokenManager(
     }
 
     fun getClaims(token: String): Claims {
-        return Jwts.parser()
-            .verifyWith(signingKey)
-            .build()
-            .parseSignedClaims(token)
-            .payload
+        try {
+            return Jwts.parser()
+                .verifyWith(signingKey)
+                .build()
+                .parseSignedClaims(token)
+                .payload
+        } catch (e: MalformedJwtException) {
+            throw ApiException(ErrorType.INVALID_TOKEN)
+        } catch (e: ExpiredJwtException) {
+            throw ApiException(ErrorType.EXPIRED_TOKEN)
+        }
     }
 }

@@ -10,4 +10,8 @@ enum class ErrorType(val status: HttpStatus, val message: String, val logLevel: 
 
     // Auth
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다.", LogLevel.INFO),
+    EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다.", LogLevel.INFO),
+
+    // Couple Invite
+    INVALID_INVITE_KEY(HttpStatus.BAD_REQUEST, "유효하지 않은 초대 코드입니다.", LogLevel.INFO),
 }

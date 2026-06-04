@@ -1,14 +1,20 @@
 package com.wheon.ourrecord.storage.db.core
 
+import com.wheon.ourrecord.core.enums.CoupleState
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.Table
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 @Entity
 @Table(name = "couple")
 class CoupleEntity(
     val anniversaryDate: LocalDate,
-    val createdByUserId: Long,
-    val closedAt: LocalDateTime?,
-) : BaseEntity()
+    val ownerId: Long,
+    state: CoupleState,
+) : BaseEntity() {
+    @Enumerated(EnumType.STRING)
+    var state = state
+        protected set
+}
