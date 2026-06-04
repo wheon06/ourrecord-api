@@ -31,7 +31,7 @@ class ApiUserArgumentResolver(
         if (claims["tokenType"] != "ACCESS") throw ApiException(ErrorType.INVALID_TOKEN)
 
         return ApiUser(
-            id = claims.id.toLong(),
+            id = claims.subject.toLong(),
         )
     }
 
