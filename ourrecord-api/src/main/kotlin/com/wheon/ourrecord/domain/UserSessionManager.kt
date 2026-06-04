@@ -1,8 +1,8 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.api.support.auth.token.RefreshTokenHasher
 import com.wheon.ourrecord.storage.db.core.UserSessionEntity
 import com.wheon.ourrecord.storage.db.core.UserSessionRepository
+import com.wheon.ourrecord.support.auth.token.RefreshTokenHasher
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 

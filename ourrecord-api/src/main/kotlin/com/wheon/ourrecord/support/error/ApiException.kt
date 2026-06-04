@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.api.support.error
+package com.wheon.ourrecord.support.error
 
 class ApiException(
     val errorType: ErrorType,

@@ -1,7 +1,7 @@
-package com.wheon.ourrecord.api.support.auth.token
+package com.wheon.ourrecord.support.auth.token
 
-import com.wheon.ourrecord.api.support.error.ApiException
-import com.wheon.ourrecord.api.support.error.ErrorType
+import com.wheon.ourrecord.support.error.ApiException
+import com.wheon.ourrecord.support.error.ErrorType
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts

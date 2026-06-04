@@ -1,7 +1,7 @@
 package com.wheon.ourrecord.api.controller
 
-import com.wheon.ourrecord.api.support.error.ErrorType
-import com.wheon.ourrecord.api.support.response.ApiResponse
+import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.support.response.ApiResponse
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler

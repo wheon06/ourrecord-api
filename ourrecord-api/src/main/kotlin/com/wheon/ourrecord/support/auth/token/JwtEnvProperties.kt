@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.api.support.auth.token
+package com.wheon.ourrecord.support.auth.token
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.bind.ConstructorBinding

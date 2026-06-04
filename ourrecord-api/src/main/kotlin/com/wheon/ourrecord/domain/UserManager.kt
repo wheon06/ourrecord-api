@@ -1,11 +1,11 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.api.support.auth.SocialProfile
 import com.wheon.ourrecord.core.enums.UserState
 import com.wheon.ourrecord.storage.db.core.UserAuthIdentityEntity
 import com.wheon.ourrecord.storage.db.core.UserAuthIdentityRepository
 import com.wheon.ourrecord.storage.db.core.UserEntity
 import com.wheon.ourrecord.storage.db.core.UserRepository
+import com.wheon.ourrecord.support.auth.SocialProfile
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime

@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.api.support.auth.token
+package com.wheon.ourrecord.support.auth.token
 
 import org.springframework.stereotype.Component
 import java.security.MessageDigest

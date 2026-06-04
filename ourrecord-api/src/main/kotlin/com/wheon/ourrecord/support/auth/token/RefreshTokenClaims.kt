@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.api.support.auth.token
+package com.wheon.ourrecord.support.auth.token
 
 data class RefreshTokenClaims(
     val userId: Long,

@@ -1,7 +1,7 @@
-package com.wheon.ourrecord.api.support.response
+package com.wheon.ourrecord.support.response
 
-import com.wheon.ourrecord.api.support.error.ErrorMessage
-import com.wheon.ourrecord.api.support.error.ErrorType
+import com.wheon.ourrecord.support.error.ErrorMessage
+import com.wheon.ourrecord.support.error.ErrorType
 
 data class ApiResponse<T> private constructor(
     val data: T? = null,

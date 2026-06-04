@@ -1,9 +1,9 @@
-package com.wheon.ourrecord.api.support.auth
+package com.wheon.ourrecord.support.auth
 
-import com.wheon.ourrecord.api.support.auth.token.TokenManager
 import com.wheon.ourrecord.core.enums.PlatformType
 import com.wheon.ourrecord.domain.UserDeviceManager
 import com.wheon.ourrecord.domain.UserSessionManager
+import com.wheon.ourrecord.support.auth.token.TokenManager
 import org.springframework.stereotype.Service
 
 @Service

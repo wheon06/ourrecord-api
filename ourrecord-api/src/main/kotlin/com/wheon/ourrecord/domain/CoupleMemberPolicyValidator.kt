@@ -1,9 +1,8 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.api.support.error.ApiException
-import com.wheon.ourrecord.api.support.error.ErrorType
-import com.wheon.ourrecord.core.enums.CoupleState
 import com.wheon.ourrecord.storage.db.core.CoupleMemberRepository
+import com.wheon.ourrecord.support.error.ApiException
+import com.wheon.ourrecord.support.error.ErrorType
 import org.springframework.stereotype.Component
 
 @Component

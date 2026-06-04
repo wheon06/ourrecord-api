@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.api.support.auth
+package com.wheon.ourrecord.support.auth
 
 import com.wheon.ourrecord.domain.UserAuthIdentityFinder
 import com.wheon.ourrecord.domain.UserManager

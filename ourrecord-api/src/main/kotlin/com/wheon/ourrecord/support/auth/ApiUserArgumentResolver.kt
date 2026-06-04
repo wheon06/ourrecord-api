@@ -1,9 +1,9 @@
-package com.wheon.ourrecord.api.support.auth
+package com.wheon.ourrecord.support.auth
 
-import com.wheon.ourrecord.api.support.ApiUser
-import com.wheon.ourrecord.api.support.auth.token.TokenManager
-import com.wheon.ourrecord.api.support.error.ApiException
-import com.wheon.ourrecord.api.support.error.ErrorType
+import com.wheon.ourrecord.support.ApiUser
+import com.wheon.ourrecord.support.auth.token.TokenManager
+import com.wheon.ourrecord.support.error.ApiException
+import com.wheon.ourrecord.support.error.ErrorType
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.core.MethodParameter
 import org.springframework.stereotype.Component

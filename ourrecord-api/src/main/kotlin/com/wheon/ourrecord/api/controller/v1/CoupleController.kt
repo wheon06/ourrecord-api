@@ -1,13 +1,12 @@
 package com.wheon.ourrecord.api.controller.v1
 
 import com.wheon.ourrecord.api.controller.v1.request.CreateCoupleRequest
-import com.wheon.ourrecord.api.controller.v1.request.CreateMemberProfileRequest
 import com.wheon.ourrecord.api.controller.v1.response.CoupleInviteResponse
 import com.wheon.ourrecord.api.controller.v1.response.CoupleResponse
 import com.wheon.ourrecord.api.controller.v1.response.CreateCoupleResponse
-import com.wheon.ourrecord.api.support.ApiUser
-import com.wheon.ourrecord.api.support.response.ApiResponse
 import com.wheon.ourrecord.domain.CoupleService
+import com.wheon.ourrecord.support.ApiUser
+import com.wheon.ourrecord.support.response.ApiResponse
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping

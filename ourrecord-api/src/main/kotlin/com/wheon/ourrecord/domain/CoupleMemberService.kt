@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.api.support.ApiUser
+import com.wheon.ourrecord.support.ApiUser
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.api.support.error
+package com.wheon.ourrecord.support.error
 
 data class ErrorMessage private constructor(
     val message: String,
