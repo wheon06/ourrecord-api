@@ -1,6 +1,7 @@
 package com.wheon.ourrecord.api.controller.v1
 
 import com.wheon.ourrecord.api.controller.v1.request.CreateCoupleRequest
+import com.wheon.ourrecord.api.controller.v1.request.CreateMemberProfileRequest
 import com.wheon.ourrecord.api.controller.v1.response.CoupleInviteResponse
 import com.wheon.ourrecord.api.controller.v1.response.CoupleResponse
 import com.wheon.ourrecord.api.controller.v1.response.CreateCoupleResponse

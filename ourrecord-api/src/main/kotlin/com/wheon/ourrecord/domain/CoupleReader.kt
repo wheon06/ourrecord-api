@@ -14,13 +14,13 @@ class CoupleReader(
     fun getCouple(userId: Long, coupleId: Long, state: CoupleState): Couple {
         val couple = coupleRepository.findByIdAndStateAndStatus(coupleId, state, EntityStatus.ACTIVE)
             ?: throw ApiException(ErrorType.NOT_FOUND_DATA)
-        if (couple.createdByUserId != userId) throw ApiException(ErrorType.NOT_FOUND_DATA)
+        if (couple.ownerId != userId) throw ApiException(ErrorType.NOT_FOUND_DATA)
 
         return Couple(
             id = couple.id,
             state = couple.state,
             anniversaryDate = couple.anniversaryDate,
-            createdByUserId = couple.createdByUserId,
+            ownerId = couple.ownerId,
         )
     }
 }

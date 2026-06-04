@@ -14,4 +14,5 @@ enum class ErrorType(val status: HttpStatus, val message: String, val logLevel: 
 
     // Couple Invite
     INVALID_INVITE_KEY(HttpStatus.BAD_REQUEST, "유효하지 않은 초대 코드입니다.", LogLevel.INFO),
+    ALREADY_JOINED_COUPLE(HttpStatus.BAD_REQUEST, "이미 다른 커플에 참여 중입니다.", LogLevel.INFO)
 }
