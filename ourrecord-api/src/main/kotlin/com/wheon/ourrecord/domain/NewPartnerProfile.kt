@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.domain
 
-data class NewMemberProfile(
+data class NewPartnerProfile(
     val displayName: String,
     val emoji: String,
 )

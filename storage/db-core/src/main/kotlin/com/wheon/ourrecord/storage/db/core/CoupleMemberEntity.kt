@@ -17,10 +17,10 @@ import jakarta.persistence.Table
 class CoupleMemberEntity(
     val coupleId: Long,
     val userId: Long,
-    @Enumerated(EnumType.STRING)
-    val role: CoupleMemberRole,
     val displayName: String,
     emoji: String,
+    @Enumerated(EnumType.STRING)
+    val role: CoupleMemberRole,
 ) : BaseEntity() {
     var emoji: String = emoji
         protected set

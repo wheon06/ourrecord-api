@@ -13,6 +13,7 @@ enum class ErrorType(val status: HttpStatus, val message: String, val logLevel: 
     EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다.", LogLevel.INFO),
 
     // Couple Invite
+    ALREADY_CREATED_INVITE(HttpStatus.BAD_REQUEST, "이미 생성된 초대가 있습니다.", LogLevel.INFO),
     INVALID_INVITE_KEY(HttpStatus.BAD_REQUEST, "유효하지 않은 초대 코드입니다.", LogLevel.INFO),
     ALREADY_JOINED_COUPLE(HttpStatus.BAD_REQUEST, "이미 다른 커플에 참여 중입니다.", LogLevel.INFO),
 }

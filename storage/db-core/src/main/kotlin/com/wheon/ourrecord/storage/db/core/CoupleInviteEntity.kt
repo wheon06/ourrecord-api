@@ -1,8 +1,12 @@
 package com.wheon.ourrecord.storage.db.core
 
+import com.wheon.ourrecord.core.enums.CoupleInviteState
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.Index
 import jakarta.persistence.Table
+import java.time.LocalDate
 
 @Entity
 @Table(
@@ -12,6 +16,23 @@ import jakarta.persistence.Table
     ],
 )
 class CoupleInviteEntity(
-    val coupleId: Long,
     val inviteKey: String,
-) : BaseEntity()
+    val ownerUserId: Long,
+    val anniversaryDate: LocalDate,
+    val ownerDisplayName: String,
+    val ownerEmoji: String,
+    state: CoupleInviteState,
+    partnerUserId: Long? = null,
+) : BaseEntity() {
+    @Enumerated(EnumType.STRING)
+    var state = state
+        protected set
+
+    var partnerUserId: Long? = partnerUserId
+        protected set
+
+    fun joined(partnerUserId: Long) {
+        this.partnerUserId = partnerUserId
+        state = CoupleInviteState.JOINED
+    }
+}

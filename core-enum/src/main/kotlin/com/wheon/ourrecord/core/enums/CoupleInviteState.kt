@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.core.enums
 
-enum class CoupleState {
+enum class CoupleInviteState {
     CREATED,
     JOINED,
 }
