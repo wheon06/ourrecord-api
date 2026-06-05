@@ -2,8 +2,8 @@ package com.wheon.ourrecord.api.controller.v1.response
 
 import com.wheon.ourrecord.domain.couple.Couple
 import com.wheon.ourrecord.domain.couple.CoupleInvite
-import com.wheon.ourrecord.domain.couple.UserCouple
 import com.wheon.ourrecord.domain.couple.CoupleMember
+import com.wheon.ourrecord.domain.couple.UserCouple
 import java.time.LocalDate
 
 data class UserMeResponse(
