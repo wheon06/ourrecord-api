@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.api.controller.v1.request
 
-import com.wheon.ourrecord.domain.NewCoupleInvite
+import com.wheon.ourrecord.domain.couple.NewCoupleInvite
 import java.time.LocalDate
 
 data class CreateCoupleInviteRequest(

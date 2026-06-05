@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain
+package com.wheon.ourrecord.domain.couple
 
 import com.wheon.ourrecord.core.enums.CoupleMemberRole
 import com.wheon.ourrecord.core.enums.EntityStatus

@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain
+package com.wheon.ourrecord.domain.couple
 
 sealed interface UserCouple {
     data object None : UserCouple

@@ -1,8 +1,9 @@
 package com.wheon.ourrecord.api.controller.v1.response
 
-import com.wheon.ourrecord.domain.Couple
-import com.wheon.ourrecord.domain.CoupleInvite
-import com.wheon.ourrecord.domain.UserCouple
+import com.wheon.ourrecord.domain.couple.Couple
+import com.wheon.ourrecord.domain.couple.CoupleInvite
+import com.wheon.ourrecord.domain.couple.UserCouple
+import com.wheon.ourrecord.domain.couple.CoupleMember
 import java.time.LocalDate
 
 data class UserMeResponse(
@@ -52,7 +53,7 @@ data class UserMeResponse(
             val emoji: String,
         ) {
             companion object {
-                fun of(member: com.wheon.ourrecord.domain.CoupleMember): CoupleMemberResponse {
+                fun of(member: CoupleMember): CoupleMemberResponse {
                     return CoupleMemberResponse(
                         id = member.userId,
                         displayName = member.displayName,

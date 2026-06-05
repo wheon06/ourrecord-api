@@ -5,7 +5,7 @@ import com.wheon.ourrecord.api.controller.v1.request.CreateMemberProfileRequest
 import com.wheon.ourrecord.api.controller.v1.response.CoupleInviteResponse
 import com.wheon.ourrecord.api.controller.v1.response.CreateCoupleInviteResponse
 import com.wheon.ourrecord.api.controller.v1.response.CreateCoupleResponse
-import com.wheon.ourrecord.domain.CoupleInviteService
+import com.wheon.ourrecord.domain.couple.CoupleInviteService
 import com.wheon.ourrecord.support.ApiUser
 import com.wheon.ourrecord.support.response.ApiResponse
 import org.springframework.web.bind.annotation.GetMapping

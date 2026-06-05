@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain
+package com.wheon.ourrecord.domain.couple
 
 import com.wheon.ourrecord.support.ApiUser
 import org.springframework.stereotype.Service

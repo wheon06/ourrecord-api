@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain
+package com.wheon.ourrecord.domain.couple
 
 import org.springframework.stereotype.Component
 import java.security.SecureRandom

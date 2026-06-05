@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.api.controller.v1.request
 
-import com.wheon.ourrecord.domain.NewPartnerProfile
+import com.wheon.ourrecord.domain.couple.NewPartnerProfile
 
 data class CreateMemberProfileRequest(
     val displayName: String,

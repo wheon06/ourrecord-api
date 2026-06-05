@@ -1,8 +1,8 @@
 package com.wheon.ourrecord.api.assembler
 
 import com.wheon.ourrecord.api.controller.v1.response.UserMeResponse
-import com.wheon.ourrecord.domain.CoupleInviteService
-import com.wheon.ourrecord.domain.CoupleService
+import com.wheon.ourrecord.domain.couple.CoupleInviteService
+import com.wheon.ourrecord.domain.couple.CoupleService
 import com.wheon.ourrecord.support.ApiUser
 import org.springframework.stereotype.Component
 
