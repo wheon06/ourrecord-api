@@ -8,6 +8,8 @@ import java.time.LocalDate
 
 data class UserMeResponse(
     val userId: Long,
+    val displayName: String,
+    val emoji: String,
     val couple: CoupleResponse?,
     val pendingInvite: CreateCoupleInviteResponse,
 ) {
@@ -19,6 +21,8 @@ data class UserMeResponse(
         ): UserMeResponse {
             return UserMeResponse(
                 userId = userId,
+                displayName = coupleInvite.ownerDisplayName,
+                emoji = coupleInvite.ownerEmoji,
                 couple = when (userCouple) {
                     UserCouple.None -> null
                     is UserCouple.Joined -> CoupleResponse.of(userCouple.couple)
