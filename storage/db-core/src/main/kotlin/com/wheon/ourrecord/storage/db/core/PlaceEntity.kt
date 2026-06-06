@@ -12,7 +12,7 @@ import java.math.BigDecimal
 class PlaceEntity(
     val coupleId: Long,
     val createdByUserId: Long,
-    val categoryCode: Long,
+    val categoryCode: String,
     val name: String,
     val address: String,
     val addressDetail: String,

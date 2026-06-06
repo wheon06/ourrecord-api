@@ -22,9 +22,8 @@ interface CoupleInviteRepository : JpaRepository<CoupleInviteEntity, Long> {
     )
     fun findByInviteKeyAndStateAndStatusForUpdate(inviteKey: String, state: CoupleInviteState, status: EntityStatus): CoupleInviteEntity?
 
-    fun findByOwnerUserIdAndStateAndStatus(
+    fun findByOwnerUserIdAndStatus(
         ownerUserId: Long,
-        state: CoupleInviteState,
         status: EntityStatus,
     ): CoupleInviteEntity?
 }

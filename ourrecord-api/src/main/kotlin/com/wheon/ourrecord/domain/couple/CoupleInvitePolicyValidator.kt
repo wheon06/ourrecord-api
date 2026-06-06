@@ -14,7 +14,7 @@ class CoupleInvitePolicyValidator(
     private val coupleMemberRepository: CoupleMemberRepository,
 ) {
     fun validateNew(userId: Long) {
-        val existsInvite = coupleInviteRepository.findByOwnerUserIdAndStateAndStatus(userId, CoupleInviteState.CREATED, EntityStatus.ACTIVE)
+        val existsInvite = coupleInviteRepository.findByOwnerUserIdAndStatus(userId, EntityStatus.ACTIVE)
         if (existsInvite != null) throw ApiException(ErrorType.ALREADY_CREATED_INVITE)
 
         val hasCouples = coupleMemberRepository.findByUserId(userId).filter { it.isActive() }

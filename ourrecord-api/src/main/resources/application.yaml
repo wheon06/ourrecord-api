@@ -2,5 +2,6 @@ spring:
   config:
     import:
       - client-kakao.yaml
+      - client-naver.yaml
       - db-core.yaml
       - auth.yaml

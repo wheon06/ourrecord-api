@@ -3,7 +3,7 @@ package com.wheon.ourrecord.api.controller.v1.request
 import com.wheon.ourrecord.core.enums.PlatformType
 
 data class KakaoLoginRequest(
-    val code: String,
+    val accessToken: String,
     val device: DeviceRequest,
 )
 

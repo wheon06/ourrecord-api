@@ -15,13 +15,13 @@ class LoginService(
     private val tokenManager: TokenManager,
 ) {
     fun loginWithKakao(
-        code: String,
+        accessToken: String,
         deviceInstallId: String,
         devicePlatform: PlatformType,
         devicePushToken: String?,
         deviceAppVersion: String,
     ): LoginResult {
-        val profile = kakaoLoginHandler.getProfile(code)
+        val profile = kakaoLoginHandler.getProfile(accessToken)
         val userId = socialLoginHandler.loginOrSignup(profile)
         val userDeviceId = userDeviceManager.registerOrTouch(
             userId = userId,

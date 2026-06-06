@@ -22,7 +22,7 @@ class AuthController(
         @RequestBody request: KakaoLoginRequest,
     ): ApiResponse<LoginResponse> {
         val result = loginService.loginWithKakao(
-            code = request.code,
+            accessToken = request.accessToken,
             deviceInstallId = request.device.installId,
             devicePlatform = request.device.platform,
             devicePushToken = request.device.pushToken,

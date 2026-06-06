@@ -4,6 +4,7 @@ include(
     ":ourrecord-api",
     ":core-enum",
     ":clients:client-kakao",
+    ":clients:client-naver",
     ":storage:db-core"
 )
 
