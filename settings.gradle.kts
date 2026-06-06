@@ -4,8 +4,7 @@ include(
     ":ourrecord-api",
     ":core-enum",
     ":clients:client-kakao",
-    ":storage:db-core",
-    ":storage:db-s3"
+    ":storage:db-core"
 )
 
 pluginManagement {
