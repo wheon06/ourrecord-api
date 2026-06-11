@@ -40,6 +40,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            docker login
             cd /opt/docker/ourrecord-api && \
             docker compose pull && \
             docker compose up -d && \
