@@ -2,6 +2,7 @@ package com.wheon.ourrecord.storage.db.core
 
 import com.wheon.ourrecord.core.enums.DeliveryState
 import com.wheon.ourrecord.core.enums.PushProviderType
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -18,7 +19,9 @@ class NotificationDeliveryEntity(
     val state: DeliveryState,
     @Enumerated(EnumType.STRING)
     val provider: PushProviderType,
+    @Column(columnDefinition = "TEXT")
     val pushTokenSnapshot: String,
+    @Column(length = 512)
     val providerMessageId: String?,
     val failureCode: String?,
     val requestedAt: LocalDateTime,

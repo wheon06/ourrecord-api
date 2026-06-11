@@ -30,6 +30,7 @@ class UserDeviceEntity(
     lastSeenAt: LocalDateTime,
     revokedAt: LocalDateTime?,
 ) : BaseIdEntity() {
+    @Column(columnDefinition = "TEXT")
     var pushToken: String = pushToken
         protected set
 

@@ -7,15 +7,25 @@ import org.springframework.stereotype.Service
 class NotificationService(
     private val notificationManager: NotificationManager,
     private val notificationReader: NotificationReader,
+    private val notificationDeliveryManager: NotificationDeliveryManager,
 ) {
     fun create(apiCoupleUser: ApiCoupleUser, toUserId: Long, type: String, metadata: Map<String, String>): Long {
-        return notificationManager.create(
+        val notificationId = notificationManager.create(
             coupleId = apiCoupleUser.coupleId,
             fromUserId = apiCoupleUser.userId,
             toUserId = toUserId,
             type = type,
             metadata = metadata,
         )
+
+        notificationDeliveryManager.dispatch(
+            notificationId = notificationId,
+            toUserId = toUserId,
+            type = type,
+            metadata = metadata,
+        )
+
+        return notificationId
     }
 
     fun getNotifications(apiCoupleUser: ApiCoupleUser): List<UserNotification> {
