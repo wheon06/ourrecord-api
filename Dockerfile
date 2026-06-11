@@ -7,7 +7,9 @@ COPY gradlew .
 COPY gradle gradle
 COPY build.gradle.kts settings.gradle.kts gradle.properties ./
 
+COPY clients/client-naver/build.gradle.kts clients/client-naver/build.gradle.kts
 COPY clients/client-kakao/build.gradle.kts clients/client-kakao/build.gradle.kts
+COPY storage/db-s3/build.gradle.kts storage/db-s3/build.gradle.kts
 COPY storage/db-core/build.gradle.kts storage/db-core/build.gradle.kts
 COPY ourrecord-api/build.gradle.kts ourrecord-api/build.gradle.kts
 
