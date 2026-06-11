@@ -4,10 +4,13 @@ import com.wheon.ourrecord.client.kakao.model.KakaoClientProfileResult
 import org.springframework.stereotype.Component
 
 @Component
-class KakaoApiClient internal constructor(
-    private val kakaoApi: KakaoApi,
+class KakaoCoreClient internal constructor(
+    private val kakaoCoreApi: KakaoCoreApi,
 ) {
     fun getProfile(accessToken: String): KakaoClientProfileResult {
-        return kakaoApi.getProfile("Bearer $accessToken", "[\"kakao_account.name\"]").toResult()
+        return kakaoCoreApi.getProfile(
+            "Bearer $accessToken",
+            "[\"kakao_account.name\"]",
+        ).toResult()
     }
 }

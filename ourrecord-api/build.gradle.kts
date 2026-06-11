@@ -21,6 +21,7 @@ dependencies {
 
     implementation(project(":core-enum"))
     implementation(project(":storage:db-core"))
+    implementation(project(":storage:db-s3"))
     implementation(project(":clients:client-kakao"))
     implementation(project(":clients:client-naver"))
 }

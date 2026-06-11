@@ -5,7 +5,8 @@ include(
     ":core-enum",
     ":clients:client-kakao",
     ":clients:client-naver",
-    ":storage:db-core"
+    ":storage:db-core",
+    ":storage:db-s3"
 )
 
 pluginManagement {

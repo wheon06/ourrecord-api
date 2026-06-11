@@ -6,6 +6,7 @@ import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.Index
 import jakarta.persistence.Table
+import java.time.LocalDateTime
 
 @Entity
 @Table(
@@ -17,15 +18,19 @@ import jakarta.persistence.Table
 class CoupleMemberEntity(
     val coupleId: Long,
     val userId: Long,
-    val displayName: String,
-    emoji: String,
     @Enumerated(EnumType.STRING)
     val role: CoupleMemberRole,
-) : BaseEntity() {
-    var emoji: String = emoji
+    val displayName: String,
+    val emoji: String,
+    val joinedAt: LocalDateTime = LocalDateTime.now(),
+    leftAt: LocalDateTime? = null,
+) : BaseNoStatusEntity() {
+    var leftAt: LocalDateTime? = leftAt
         protected set
 
-    fun updateEmoji(newEmoji: String) {
-        this.emoji = newEmoji
+    fun left() {
+        this.leftAt = LocalDateTime.now()
     }
+
+    fun isActive(): Boolean = leftAt == null
 }

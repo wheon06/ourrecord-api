@@ -11,11 +11,37 @@ import java.time.LocalDate
 @Table(name = "record")
 class RecordEntity(
     val coupleId: Long,
-    val placeId: Long,
-    val authorUserId: Long,
+    val authorMemberId: Long,
+    couplePlaceId: Long,
+    title: String,
+    content: String,
+    visitedOn: LocalDate,
+    state: RecordState,
+) : BaseEntity() {
+    var couplePlaceId: Long = couplePlaceId
+        protected set
+
+    var title: String = title
+        protected set
+
+    var content: String = content
+        protected set
+
+    var visitedOn: LocalDate = visitedOn
+        protected set
+
     @Enumerated(EnumType.STRING)
-    val state: RecordState,
-    val visitedOn: LocalDate,
-    val title: String,
-    val content: String,
-) : BaseEntity()
+    var state: RecordState = state
+        protected set
+
+    fun update(couplePlaceId: Long, title: String, content: String, visitedOn: LocalDate) {
+        this.couplePlaceId = couplePlaceId
+        this.title = title
+        this.content = content
+        this.visitedOn = visitedOn
+    }
+
+    fun archived() {
+        state = RecordState.ARCHIVED
+    }
+}

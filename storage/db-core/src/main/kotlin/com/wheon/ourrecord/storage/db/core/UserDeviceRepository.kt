@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserDeviceRepository : JpaRepository<UserDeviceEntity, Long> {
     fun findByUserIdAndInstallId(userId: Long, installId: String): UserDeviceEntity?
+    fun findFirstByUserIdAndRevokedAtIsNullOrderByLastSeenAtDesc(userId: Long): UserDeviceEntity?
 }

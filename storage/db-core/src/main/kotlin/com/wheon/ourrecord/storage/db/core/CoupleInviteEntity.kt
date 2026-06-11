@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated
 import jakarta.persistence.Index
 import jakarta.persistence.Table
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Entity
 @Table(
@@ -22,17 +23,26 @@ class CoupleInviteEntity(
     val ownerDisplayName: String,
     val ownerEmoji: String,
     state: CoupleInviteState,
-    partnerUserId: Long? = null,
+    acceptedByUserId: Long? = null,
+    acceptedAt: LocalDateTime? = null,
 ) : BaseEntity() {
     @Enumerated(EnumType.STRING)
     var state = state
         protected set
 
-    var partnerUserId: Long? = partnerUserId
+    var acceptedByUserId: Long? = acceptedByUserId
         protected set
 
-    fun joined(partnerUserId: Long) {
-        this.partnerUserId = partnerUserId
-        state = CoupleInviteState.JOINED
+    var acceptedAt: LocalDateTime? = acceptedAt
+        protected set
+
+    fun accepted(acceptedByUserId: Long) {
+        this.acceptedByUserId = acceptedByUserId
+        this.acceptedAt = LocalDateTime.now()
+        state = CoupleInviteState.ACCEPTED
+    }
+
+    fun joined(acceptedByUserId: Long) {
+        accepted(acceptedByUserId)
     }
 }

@@ -13,6 +13,7 @@ import jakarta.persistence.Table
 )
 class RecordMediaEntity(
     val recordId: Long,
+    val coupleId: Long,
     val mediaAssetId: Long,
     val sortOrder: Int,
 ) : BaseEntity()

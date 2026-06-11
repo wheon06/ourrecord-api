@@ -7,7 +7,7 @@ import org.springframework.web.service.annotation.HttpExchange
 import org.springframework.web.service.annotation.PostExchange
 
 @HttpExchange
-internal interface KakaoApi {
+internal interface KakaoCoreApi {
     @PostExchange("/v2/user/me")
     fun getProfile(
         @RequestHeader(HttpHeaders.AUTHORIZATION) accessToken: String,

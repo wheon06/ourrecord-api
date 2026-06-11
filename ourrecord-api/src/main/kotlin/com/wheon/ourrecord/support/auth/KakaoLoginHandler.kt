@@ -1,15 +1,15 @@
 package com.wheon.ourrecord.support.auth
 
-import com.wheon.ourrecord.client.kakao.KakaoApiClient
+import com.wheon.ourrecord.client.kakao.KakaoCoreClient
 import com.wheon.ourrecord.core.enums.SocialProviderType
 import org.springframework.stereotype.Component
 
 @Component
 class KakaoLoginHandler(
-    private val kakaoApiClient: KakaoApiClient,
+    private val kakaoCoreClient: KakaoCoreClient,
 ) {
     fun getProfile(accessToken: String): SocialProfile {
-        val kakaoProfile = kakaoApiClient.getProfile(accessToken)
+        val kakaoProfile = kakaoCoreClient.getProfile(accessToken)
 
         return SocialProfile(
             provider = SocialProviderType.KAKAO,

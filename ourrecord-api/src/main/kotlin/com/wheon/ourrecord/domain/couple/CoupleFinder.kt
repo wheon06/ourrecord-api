@@ -11,6 +11,6 @@ class CoupleFinder(
     fun findUserCouple(userId: Long): UserCouple {
         val member = coupleMemberRepository.findByUserId(userId).singleOrNull { it.isActive() } ?: return UserCouple.None
         val couple = coupleReader.getCouple(member.coupleId)
-        return UserCouple.Joined(couple)
+        return UserCouple.Joined(member.id, couple)
     }
 }

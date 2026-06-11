@@ -5,4 +5,5 @@ package com.wheon.ourrecord.core.enums
  */
 enum class PlaceSource {
     NAVER,
+    KAKAO,
 }

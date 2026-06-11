@@ -11,7 +11,7 @@ import jakarta.persistence.Table
 @Table(name = "media_asset")
 class MediaAssetEntity(
     val coupleId: Long,
-    val ownerUserId: Long,
+    val ownerMemberId: Long,
     @Enumerated(EnumType.STRING)
     val state: MediaAssetState,
     @Enumerated(EnumType.STRING)

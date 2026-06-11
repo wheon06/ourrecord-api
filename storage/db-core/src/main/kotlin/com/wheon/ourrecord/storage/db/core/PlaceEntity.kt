@@ -1,25 +1,19 @@
 package com.wheon.ourrecord.storage.db.core
 
-import com.wheon.ourrecord.core.enums.PlaceSource
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
-import jakarta.persistence.EnumType
-import jakarta.persistence.Enumerated
 import jakarta.persistence.Table
 import java.math.BigDecimal
 
 @Entity
 @Table(name = "place")
 class PlaceEntity(
-    val coupleId: Long,
-    val createdByUserId: Long,
-    val categoryCode: String,
     val name: String,
     val address: String,
-    val addressDetail: String,
+    val roadAddress: String?,
+    @Column(nullable = false, precision = 9, scale = 6)
     val latitude: BigDecimal,
+    @Column(nullable = false, precision = 9, scale = 6)
     val longitude: BigDecimal,
     val geoHash: String,
-    @Enumerated(EnumType.STRING)
-    val source: PlaceSource,
-    val externalPlaceId: String?,
 ) : BaseEntity()

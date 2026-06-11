@@ -39,4 +39,17 @@ class UserDeviceManager(
         )
         return userDeviceRepository.save(device).id
     }
+
+    fun updateCurrentPushToken(userId: Long, pushToken: String) {
+        val now = LocalDateTime.now()
+        val device = userDeviceRepository.findFirstByUserIdAndRevokedAtIsNullOrderByLastSeenAtDesc(userId)
+            ?: return
+
+        device.touch(
+            pushToken = pushToken,
+            appVersion = device.appVersion,
+            now = now,
+        )
+        userDeviceRepository.save(device)
+    }
 }

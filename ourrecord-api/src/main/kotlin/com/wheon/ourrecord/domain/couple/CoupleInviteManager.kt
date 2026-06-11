@@ -13,6 +13,7 @@ import com.wheon.ourrecord.support.error.ApiException
 import com.wheon.ourrecord.support.error.ErrorType
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
+import java.util.UUID
 
 @Component
 class CoupleInviteManager(
@@ -42,9 +43,11 @@ class CoupleInviteManager(
 
         val savedCouple = coupleRepository.save(
             CoupleEntity(
+                publicId = UUID.randomUUID().toString(),
+                createdFromInviteId = coupleInvite.id,
                 anniversaryDate = coupleInvite.anniversaryDate,
-                ownerUserId = coupleInvite.ownerUserId,
-                partnerUserId = userId,
+                state = com.wheon.ourrecord.core.enums.CoupleState.ACTIVE,
+                endedAt = null,
             ),
         )
 
@@ -62,7 +65,7 @@ class CoupleInviteManager(
                     userId = userId,
                     displayName = partnerProfile.displayName,
                     emoji = partnerProfile.emoji,
-                    role = CoupleMemberRole.MEMBER,
+                    role = CoupleMemberRole.PARTNER,
                 ),
             ),
         )
