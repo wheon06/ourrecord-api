@@ -41,6 +41,15 @@ class CoupleInviteManager(
         val coupleInvite = coupleInviteRepository.findByInviteKeyAndStateAndStatusForUpdate(inviteKey, CoupleInviteState.CREATED, EntityStatus.ACTIVE)
             ?: throw ApiException(ErrorType.INVALID_INVITE_KEY)
 
+        if (coupleInvite.ownerUserId == userId) {
+            throw ApiException(ErrorType.INVALID_INVITE_KEY)
+        }
+
+        val hasCouples = coupleMemberRepository.findByUserId(userId).any { it.isActive() }
+        if (hasCouples) {
+            throw ApiException(ErrorType.ALREADY_JOINED_COUPLE)
+        }
+
         val savedCouple = coupleRepository.save(
             CoupleEntity(
                 publicId = UUID.randomUUID().toString(),

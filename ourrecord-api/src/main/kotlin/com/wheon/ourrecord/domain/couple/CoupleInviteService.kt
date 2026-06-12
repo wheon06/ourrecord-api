@@ -21,7 +21,6 @@ class CoupleInviteService(
     }
 
     fun acceptInvite(apiUser: ApiUser, inviteKey: String, partnerProfile: NewPartnerProfile): Long {
-        coupleInvitePolicyValidator.validateAccept(apiUser.id, inviteKey)
         return coupleInviteManager.accept(apiUser.id, inviteKey, partnerProfile)
     }
 
