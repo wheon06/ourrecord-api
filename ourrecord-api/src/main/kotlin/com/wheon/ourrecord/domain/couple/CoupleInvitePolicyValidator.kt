@@ -7,6 +7,7 @@ import com.wheon.ourrecord.storage.db.core.CoupleMemberRepository
 import com.wheon.ourrecord.support.error.ApiException
 import com.wheon.ourrecord.support.error.ErrorType
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class CoupleInvitePolicyValidator(
@@ -23,6 +24,7 @@ class CoupleInvitePolicyValidator(
         }
     }
 
+    @Transactional
     fun validateAccept(userId: Long, inviteKey: String) {
         val coupleInvite = coupleInviteRepository.findByInviteKeyAndStateAndStatusForUpdate(inviteKey, CoupleInviteState.CREATED, EntityStatus.ACTIVE)
             ?: throw ApiException(ErrorType.INVALID_INVITE_KEY)

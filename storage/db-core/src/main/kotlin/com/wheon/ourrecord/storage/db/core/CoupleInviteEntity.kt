@@ -41,8 +41,4 @@ class CoupleInviteEntity(
         this.acceptedAt = LocalDateTime.now()
         state = CoupleInviteState.ACCEPTED
     }
-
-    fun joined(acceptedByUserId: Long) {
-        accepted(acceptedByUserId)
-    }
 }

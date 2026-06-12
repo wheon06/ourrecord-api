@@ -70,7 +70,7 @@ class CoupleInviteManager(
             ),
         )
 
-        coupleInvite.joined(userId)
+        coupleInvite.accepted(userId)
 
         return savedCouple.id
     }
