@@ -5,8 +5,6 @@ import com.wheon.ourrecord.api.controller.v1.request.UpdateDeviceRequest
 import com.wheon.ourrecord.api.controller.v1.response.UserMeResponse
 import com.wheon.ourrecord.api.controller.v1.response.UserMyResponse
 import com.wheon.ourrecord.domain.UserService
-import com.wheon.ourrecord.domain.couple.CoupleService
-import com.wheon.ourrecord.domain.couple.UserCouple
 import com.wheon.ourrecord.support.ApiUser
 import com.wheon.ourrecord.support.response.ApiResponse
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val userAssembler: UserAssembler,
     private val userService: UserService,
-    private val coupleService: CoupleService,
 ) {
     @PutMapping("/v1/devices/current")
     fun updateDevice(
@@ -36,14 +33,10 @@ class UserController(
     fun getUserMe(
         apiUser: ApiUser,
     ): ApiResponse<UserMeResponse> {
-        val userCouple = coupleService.findUserCouple(apiUser)
         return ApiResponse.success(
             UserMeResponse(
                 userId = apiUser.id,
-                isCoupleMember = when (userCouple) {
-                    UserCouple.None -> false
-                    is UserCouple.Joined -> true
-                },
+                isNewUser = userService.isNewUser(apiUser),
             ),
         )
     }

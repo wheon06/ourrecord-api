@@ -1,5 +1,6 @@
 package com.wheon.ourrecord.domain.couple
 
+import com.wheon.ourrecord.core.enums.CoupleInviteState
 import com.wheon.ourrecord.core.enums.EntityStatus
 import com.wheon.ourrecord.storage.db.core.CoupleInviteRepository
 import com.wheon.ourrecord.support.error.ApiException
@@ -10,6 +11,11 @@ import org.springframework.stereotype.Component
 class CoupleInviteFinder(
     private val coupleInviteRepository: CoupleInviteRepository,
 ) {
+    fun hasInviteHistory(userId: Long): Boolean {
+        return coupleInviteRepository.existsByOwnerUserId(userId) ||
+            coupleInviteRepository.existsByAcceptedByUserIdAndState(userId, CoupleInviteState.ACCEPTED)
+    }
+
     fun find(userId: Long): CoupleInvite {
         val coupleInvite = coupleInviteRepository.findByOwnerUserIdAndStatus(userId, EntityStatus.ACTIVE)
             ?: throw ApiException(ErrorType.NOT_FOUND_DATA)
