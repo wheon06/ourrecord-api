@@ -25,7 +25,7 @@ class CoupleInviteService(
         return coupleInviteManager.accept(apiUser.id, inviteKey, partnerProfile)
     }
 
-    fun findUserInvite(apiUser: ApiUser): CoupleInvite {
-        return coupleInviteFinder.find(apiUser.id)
+    fun findPendingUserInvite(apiUser: ApiUser): UserPendingInvite {
+        return coupleInviteFinder.findPendingInviteByOwner(apiUser.id)
     }
 }

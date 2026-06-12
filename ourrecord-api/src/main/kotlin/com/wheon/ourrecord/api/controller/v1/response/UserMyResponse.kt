@@ -1,36 +1,55 @@
 package com.wheon.ourrecord.api.controller.v1.response
 
 import com.wheon.ourrecord.domain.couple.Couple
-import com.wheon.ourrecord.domain.couple.CoupleInvite
 import com.wheon.ourrecord.domain.couple.CoupleMember
-import com.wheon.ourrecord.domain.couple.UserCouple
+import com.wheon.ourrecord.domain.couple.UserRelationship
 import java.time.LocalDate
 
 data class UserMyResponse(
     val userId: Long,
-    val displayName: String,
-    val emoji: String,
-    val couple: CoupleResponse?,
-    val pendingInvite: CreateCoupleInviteResponse,
+    val relationship: RelationshipResponse,
 ) {
     companion object {
         fun of(
             userId: Long,
-            userCouple: UserCouple,
-            coupleInvite: CoupleInvite,
+            relationship: UserRelationship,
         ): UserMyResponse {
             return UserMyResponse(
                 userId = userId,
-                displayName = coupleInvite.ownerDisplayName,
-                emoji = coupleInvite.ownerEmoji,
-                couple = when (userCouple) {
-                    UserCouple.None -> null
-                    is UserCouple.Joined -> CoupleResponse.of(userCouple.couple)
+                relationship = when (relationship) {
+                    UserRelationship.None -> RelationshipResponse.None
+                    is UserRelationship.WaitingInvite -> RelationshipResponse.WaitingInvite(
+                        inviteKey = relationship.invite.inviteKey,
+                        displayName = relationship.invite.ownerDisplayName,
+                        emoji = relationship.invite.ownerEmoji,
+                    )
+                    is UserRelationship.JoinedCouple -> RelationshipResponse.JoinedCouple(
+                        couple = CoupleResponse.of(relationship.couple),
+                    )
                 },
-                pendingInvite = CreateCoupleInviteResponse(
-                    inviteKey = coupleInvite.inviteKey,
-                ),
             )
+        }
+    }
+
+    sealed interface RelationshipResponse {
+        val type: String
+
+        data object None : RelationshipResponse {
+            override val type = "NONE"
+        }
+
+        data class WaitingInvite(
+            val inviteKey: String,
+            val displayName: String,
+            val emoji: String,
+        ) : RelationshipResponse {
+            override val type = "WAITING_INVITE"
+        }
+
+        data class JoinedCouple(
+            val couple: CoupleResponse,
+        ) : RelationshipResponse {
+            override val type = "JOINED_COUPLE"
         }
     }
 

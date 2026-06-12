@@ -27,10 +27,20 @@ interface CoupleInviteRepository : JpaRepository<CoupleInviteEntity, Long> {
         status: EntityStatus,
     ): CoupleInviteEntity?
 
-    fun existsByOwnerUserId(ownerUserId: Long): Boolean
+    fun findByOwnerUserIdAndStateAndStatus(
+        ownerUserId: Long,
+        state: CoupleInviteState,
+        status: EntityStatus,
+    ): CoupleInviteEntity?
 
-    fun existsByAcceptedByUserIdAndState(
+    fun existsByOwnerUserIdAndStatus(
+        ownerUserId: Long,
+        status: EntityStatus,
+    ): Boolean
+
+    fun existsByAcceptedByUserIdAndStateAndStatus(
         acceptedByUserId: Long,
         state: CoupleInviteState,
+        status: EntityStatus,
     ): Boolean
 }
