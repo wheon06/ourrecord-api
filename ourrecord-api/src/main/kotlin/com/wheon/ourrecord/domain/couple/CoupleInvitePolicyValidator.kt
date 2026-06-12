@@ -1,11 +1,13 @@
 package com.wheon.ourrecord.domain.couple
 
+import com.wheon.ourrecord.core.enums.CoupleInviteState
 import com.wheon.ourrecord.core.enums.EntityStatus
 import com.wheon.ourrecord.storage.db.core.CoupleInviteRepository
 import com.wheon.ourrecord.storage.db.core.CoupleMemberRepository
 import com.wheon.ourrecord.support.error.ApiException
 import com.wheon.ourrecord.support.error.ErrorType
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class CoupleInvitePolicyValidator(
@@ -15,6 +17,18 @@ class CoupleInvitePolicyValidator(
     fun validateNew(userId: Long) {
         val existsInvite = coupleInviteRepository.findByOwnerUserIdAndStatus(userId, EntityStatus.ACTIVE)
         if (existsInvite != null) throw ApiException(ErrorType.ALREADY_CREATED_INVITE)
+
+        val hasCouples = coupleMemberRepository.findByUserId(userId).filter { it.isActive() }
+        if (hasCouples.isNotEmpty()) {
+            throw ApiException(ErrorType.ALREADY_JOINED_COUPLE)
+        }
+    }
+
+    @Transactional
+    fun validateAccept(userId: Long, inviteKey: String) {
+        val coupleInvite = coupleInviteRepository.findByInviteKeyAndStateAndStatusForUpdate(inviteKey, CoupleInviteState.CREATED, EntityStatus.ACTIVE)
+            ?: throw ApiException(ErrorType.INVALID_INVITE_KEY)
+        if (coupleInvite.ownerUserId == userId) throw ApiException(ErrorType.INVALID_INVITE_KEY)
 
         val hasCouples = coupleMemberRepository.findByUserId(userId).filter { it.isActive() }
         if (hasCouples.isNotEmpty()) {
