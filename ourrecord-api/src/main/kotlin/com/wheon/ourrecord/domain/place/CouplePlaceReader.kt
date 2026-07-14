@@ -2,7 +2,6 @@ package com.wheon.ourrecord.domain.place
 
 import com.wheon.ourrecord.core.enums.CouplePlaceVisibility
 import com.wheon.ourrecord.core.enums.EntityStatus
-import com.wheon.ourrecord.core.enums.RecordState
 import com.wheon.ourrecord.domain.record.RecordMediaReader
 import com.wheon.ourrecord.storage.db.core.CouplePlaceRepository
 import com.wheon.ourrecord.support.error.ApiException

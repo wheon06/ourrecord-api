@@ -1,7 +1,6 @@
 package com.wheon.ourrecord.domain.record
 
 import com.wheon.ourrecord.core.enums.EntityStatus
-import com.wheon.ourrecord.core.enums.RecordState
 import com.wheon.ourrecord.storage.db.core.RecordRepository
 import org.springframework.stereotype.Component
 

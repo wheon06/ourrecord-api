@@ -1,8 +1,7 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.core.enums.UserState
-import com.wheon.ourrecord.storage.db.core.UserAuthIdentityEntity
-import com.wheon.ourrecord.storage.db.core.UserAuthIdentityRepository
+import com.wheon.ourrecord.storage.db.core.UserIdentityEntity
+import com.wheon.ourrecord.storage.db.core.UserIdentityRepository
 import com.wheon.ourrecord.storage.db.core.UserEntity
 import com.wheon.ourrecord.storage.db.core.UserRepository
 import com.wheon.ourrecord.support.auth.SocialProfile
@@ -13,7 +12,7 @@ import java.time.LocalDateTime
 @Component
 class UserManager(
     private val userRepository: UserRepository,
-    private val userAuthIdentityRepository: UserAuthIdentityRepository,
+    private val userAuthIdentityRepository: UserIdentityRepository,
 ) {
     @Transactional
     fun createSocialUser(profile: SocialProfile): Long {
@@ -25,7 +24,7 @@ class UserManager(
         )
 
         userAuthIdentityRepository.save(
-            UserAuthIdentityEntity(
+            UserIdentityEntity(
                 userId = savedUser.id,
                 provider = profile.provider,
                 providerUserId = profile.providerUserId,

@@ -1,6 +1,5 @@
 package com.wheon.ourrecord.domain.record
 
-import com.wheon.ourrecord.core.enums.RecordState
 import java.time.LocalDate
 
 data class Record(

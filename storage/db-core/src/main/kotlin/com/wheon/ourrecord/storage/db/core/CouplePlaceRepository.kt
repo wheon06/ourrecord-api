@@ -2,7 +2,6 @@ package com.wheon.ourrecord.storage.db.core
 
 import com.wheon.ourrecord.core.enums.CouplePlaceVisibility
 import com.wheon.ourrecord.core.enums.EntityStatus
-import com.wheon.ourrecord.core.enums.RecordState
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 

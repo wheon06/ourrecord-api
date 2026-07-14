@@ -1,8 +1,6 @@
 package com.wheon.ourrecord.domain.record
 
 import com.wheon.ourrecord.core.enums.EntityStatus
-import com.wheon.ourrecord.core.enums.MediaAssetState
-import com.wheon.ourrecord.core.enums.RecordState
 import com.wheon.ourrecord.storage.db.core.RecordMediaRepository
 import com.wheon.ourrecord.support.file.MediaAssetUrlResolver
 import org.springframework.data.domain.PageRequest

@@ -1,13 +1,13 @@
 package com.wheon.ourrecord.domain.couple
 
-import com.wheon.ourrecord.support.ApiUser
+import com.wheon.ourrecord.domain.user.User
 import org.springframework.stereotype.Service
 
 @Service
 class CoupleService(
-    private val coupleFinder: CoupleFinder,
+    private val coupleHandler: CoupleHandler
 ) {
-    fun findUserCouple(apiUser: ApiUser): UserCouple {
-        return coupleFinder.findUserCouple(apiUser.id)
+    fun accept(user: User, inviteKey: String) {
+        coupleHandler.accept(user.id, inviteKey)
     }
 }

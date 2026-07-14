@@ -1,6 +1,5 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.domain.couple.CoupleInviteFinder
 import com.wheon.ourrecord.support.ApiUser
 import org.springframework.stereotype.Service
 

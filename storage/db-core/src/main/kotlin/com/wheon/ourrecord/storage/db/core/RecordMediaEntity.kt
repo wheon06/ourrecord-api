@@ -5,15 +5,9 @@ import jakarta.persistence.Index
 import jakarta.persistence.Table
 
 @Entity
-@Table(
-    name = "record_media",
-    indexes = [
-        Index(name = "udx_record_media_record_id_sort_order", columnList = "recordId, sortOrder", unique = true),
-    ],
-)
+@Table("record_media")
 class RecordMediaEntity(
     val recordId: Long,
     val coupleId: Long,
-    val mediaAssetId: Long,
-    val sortOrder: Int,
+    val url: String,
 ) : BaseEntity()

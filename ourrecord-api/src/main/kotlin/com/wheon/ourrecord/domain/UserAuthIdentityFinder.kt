@@ -1,14 +1,14 @@
 package com.wheon.ourrecord.domain
 
-import com.wheon.ourrecord.core.enums.SocialProviderType
-import com.wheon.ourrecord.storage.db.core.UserAuthIdentityRepository
+import com.wheon.ourrecord.core.enums.IdentityProviderType
+import com.wheon.ourrecord.storage.db.core.UserIdentityRepository
 import org.springframework.stereotype.Component
 
 @Component
 class UserAuthIdentityFinder(
-    private val userAuthIdentityRepository: UserAuthIdentityRepository,
+    private val userAuthIdentityRepository: UserIdentityRepository,
 ) {
-    fun findUserIdOrNull(provider: SocialProviderType, providerUserId: String): Long? {
+    fun findUserIdOrNull(provider: IdentityProviderType, providerUserId: String): Long? {
         val userAuthIdentity = userAuthIdentityRepository.findByProviderAndProviderUserId(
             provider = provider,
             providerUserId = providerUserId,

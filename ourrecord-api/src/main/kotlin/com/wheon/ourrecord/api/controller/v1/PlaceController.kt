@@ -1,10 +1,7 @@
 package com.wheon.ourrecord.api.controller.v1
 
 import com.wheon.ourrecord.api.controller.v1.request.UpdateCouplePlaceRequest
-import com.wheon.ourrecord.api.controller.v1.response.CouplePlaceMapMarkerResponse
 import com.wheon.ourrecord.api.controller.v1.response.CouplePlaceRecordResponse
-import com.wheon.ourrecord.api.controller.v1.response.PlaceCategoryResponse
-import com.wheon.ourrecord.api.controller.v1.response.PlaceSearchResponse
 import com.wheon.ourrecord.client.kakao.KakaoMapClient
 import com.wheon.ourrecord.domain.place.PlaceService
 import com.wheon.ourrecord.support.ApiCoupleUser

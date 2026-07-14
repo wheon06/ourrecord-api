@@ -2,45 +2,50 @@ package com.wheon.ourrecord.api.controller.v1.request
 
 import com.wheon.ourrecord.core.enums.PlaceSource
 import com.wheon.ourrecord.domain.place.AddPlace
-import com.wheon.ourrecord.domain.record.AddRecord
 import com.wheon.ourrecord.domain.record.NewRecord
+import com.wheon.ourrecord.domain.record.NewRecordMedia
+import com.wheon.ourrecord.domain.record.RecordContent
 import com.wheon.ourrecord.domain.record.RecordImagePolicy
+import com.wheon.ourrecord.domain.record.RecordTarget
 import com.wheon.ourrecord.domain.record.UpdateRecord
 import com.wheon.ourrecord.domain.record.UpdateRecordDetails
 import com.wheon.ourrecord.support.error.ApiException
 import com.wheon.ourrecord.support.error.ErrorType
 import com.wheon.ourrecord.support.file.ImageHandle
+import com.wheon.ourrecord.support.file.ResourceType
 import java.math.BigDecimal
 import java.time.LocalDate
 
 data class AddRecordRequest(
+    val placeId: Long,
     val title: String,
     val content: String,
     val visitedOn: LocalDate,
-    val place: AddRecordPlaceRequest,
-    val images: List<Long>?,
+    val media: List<AddMediaRequest>,
 ) {
-    fun toAddRecord(): AddRecord {
+    fun toTarget(): RecordTarget {
+        return RecordTarget(placeId)
+    }
+
+    fun toContent(): RecordContent {
         if (title.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
         if (content.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
 
-        return AddRecord(
-            visitedOn = visitedOn,
+        return RecordContent(
             title = title,
             content = content,
-            place = place.toAddPlace(),
+            visitedOn = visitedOn,
         )
     }
 
-    fun toImageHandle(): ImageHandle {
-        val imageIds = images ?: emptyList()
-        validateRecordImageIds(imageIds)
-        return ImageHandle(
-            addImageIds = imageIds,
-            deleteImageIds = emptyList(),
-        )
+    fun toMedia(): List<NewRecordMedia> {
+        return media.map { NewRecordMedia(ResourceType.RECORD, it.url) }
     }
 }
+
+data class AddMediaRequest(
+    val url: String,
+)
 
 data class AddRecordPlaceRequest(
     val categoryCode: String?,

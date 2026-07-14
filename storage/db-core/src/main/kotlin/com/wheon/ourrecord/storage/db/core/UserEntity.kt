@@ -1,6 +1,5 @@
 package com.wheon.ourrecord.storage.db.core
 
-import com.wheon.ourrecord.core.enums.UserState
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated

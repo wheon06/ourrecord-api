@@ -1,9 +1,6 @@
 package com.wheon.ourrecord.storage.db.core
 
-import com.wheon.ourrecord.core.enums.CouplePlaceVisibility
 import jakarta.persistence.Entity
-import jakarta.persistence.EnumType
-import jakarta.persistence.Enumerated
 import jakarta.persistence.Table
 
 @Entity
@@ -13,8 +10,6 @@ class CouplePlaceEntity(
     val placeId: Long,
     categoryCode: String?,
     val savedByMemberId: Long,
-    @Enumerated(EnumType.STRING)
-    val visibility: CouplePlaceVisibility,
 ) : BaseEntity() {
     var categoryCode: String? = categoryCode
         protected set
