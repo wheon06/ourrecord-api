@@ -47,7 +47,7 @@ class RecordManager(
                 RecordMediaEntity(
                     recordId = savedRecord.id,
                     coupleId = coupleUser.coupleId,
-                    url = it.url,
+                    mediaUrl = it.url,
                 )
             },
         )

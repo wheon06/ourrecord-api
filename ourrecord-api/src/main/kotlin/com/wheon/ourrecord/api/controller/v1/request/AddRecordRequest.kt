@@ -1,6 +1,7 @@
 package com.wheon.ourrecord.api.controller.v1.request
 
 import com.wheon.ourrecord.core.enums.PlaceSource
+import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.domain.place.AddPlace
 import com.wheon.ourrecord.domain.record.NewRecord
 import com.wheon.ourrecord.domain.record.NewRecordMedia
@@ -12,7 +13,6 @@ import com.wheon.ourrecord.domain.record.UpdateRecordDetails
 import com.wheon.ourrecord.support.error.ApiException
 import com.wheon.ourrecord.support.error.ErrorType
 import com.wheon.ourrecord.support.file.ImageHandle
-import com.wheon.ourrecord.support.file.ResourceType
 import java.math.BigDecimal
 import java.time.LocalDate
 

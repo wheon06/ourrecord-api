@@ -5,5 +5,4 @@ spring:
       - client-naver.yaml
       - db-core.yaml
       - db-s3.yml
-      - auth.yaml
       - firebase.yaml

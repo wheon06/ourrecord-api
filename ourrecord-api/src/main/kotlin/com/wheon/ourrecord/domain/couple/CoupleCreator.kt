@@ -13,7 +13,7 @@ class CoupleCreator(
             CoupleEntity(
                 ownerUserId = ownerUserId,
                 partnerUserId = partnerUserId,
-            )
+            ),
         )
         return savedCouple.id
     }

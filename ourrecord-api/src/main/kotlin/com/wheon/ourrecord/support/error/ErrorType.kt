@@ -9,8 +9,8 @@ enum class ErrorType(val status: HttpStatus, val message: String, val logLevel: 
     NOT_FOUND_DATA(HttpStatus.NOT_FOUND, "해당 데이터를 찾을 수 없습니다.", LogLevel.INFO),
 
     // Auth
-    INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다.", LogLevel.INFO),
-    EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다.", LogLevel.INFO),
+    AUTHENTICATED_SESSION_EXPIRED(HttpStatus.UNAUTHORIZED, "인증 세션이 만료되었습니다.", LogLevel.INFO),
+    REFRESH_KEY_INVALID(HttpStatus.BAD_REQUEST, "갱신 키가 올바르지 않습니다.", LogLevel.INFO),
 
     // Couple
     INVITE_STATE_INVALID(HttpStatus.BAD_REQUEST, "초대 상태가 올바르지 않습니다.", LogLevel.INFO),

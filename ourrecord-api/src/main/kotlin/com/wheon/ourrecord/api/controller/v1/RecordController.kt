@@ -1,11 +1,11 @@
 package com.wheon.ourrecord.api.controller.v1
 
 import com.wheon.ourrecord.api.controller.v1.request.AddRecordRequest
+import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.domain.record.RecordImageValidator
 import com.wheon.ourrecord.domain.record.RecordService
 import com.wheon.ourrecord.domain.user.CoupleUser
 import com.wheon.ourrecord.support.file.FileUploader
-import com.wheon.ourrecord.support.file.ResourceType
 import com.wheon.ourrecord.support.response.ApiResponse
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
@@ -30,7 +30,12 @@ class RecordController(
         @RequestPart file: MultipartFile,
     ): ApiResponse<String> {
         recordImageValidator.validate(file)
-        return ApiResponse.success(fileUploader.uploadFile(ResourceType.RECORD, file).url)
+        return ApiResponse.success(
+            fileUploader.uploadFile(
+                resourceType = ResourceType.RECORD,
+                file = file,
+            ).url,
+        )
     }
 
     @PostMapping("/v1/records")

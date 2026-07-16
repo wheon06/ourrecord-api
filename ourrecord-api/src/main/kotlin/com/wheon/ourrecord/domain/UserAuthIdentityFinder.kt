@@ -9,9 +9,9 @@ class UserAuthIdentityFinder(
     private val userAuthIdentityRepository: UserIdentityRepository,
 ) {
     fun findUserIdOrNull(provider: IdentityProviderType, providerUserId: String): Long? {
-        val userAuthIdentity = userAuthIdentityRepository.findByProviderAndProviderUserId(
+        val userAuthIdentity = userAuthIdentityRepository.findByProviderAndProviderSubject(
             provider = provider,
-            providerUserId = providerUserId,
+            providerSubject = providerUserId,
         )
 
         return userAuthIdentity?.userId

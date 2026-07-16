@@ -1,8 +1,8 @@
 package com.wheon.ourrecord.domain.record
 
+import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.support.error.ApiException
 import com.wheon.ourrecord.support.error.ErrorType
-import com.wheon.ourrecord.support.file.ResourceType
 
 data class NewRecordMedia(
     val resourceType: ResourceType,

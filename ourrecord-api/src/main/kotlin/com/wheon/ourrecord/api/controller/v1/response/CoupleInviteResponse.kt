@@ -8,14 +8,14 @@ data class CoupleInviteResponse(
     val inviteKey: String,
     val userId: Long,
     val state: CoupleInviteState,
-    val createdAt: LocalDateTime
+    val createdAt: LocalDateTime,
 ) {
     companion object {
         fun of(access: CoupleInvite) = CoupleInviteResponse(
             inviteKey = access.inviteKey,
             userId = access.userId,
             state = access.state,
-            createdAt = access.createdAt
+            createdAt = access.createdAt,
         )
     }
 }

@@ -12,7 +12,7 @@ import jakarta.persistence.Table
     name = "couple_invite",
     indexes = [
         Index(name = "udx_couple_invite_key", columnList = "inviteKey", unique = true),
-    ]
+    ],
 )
 class CoupleInviteEntity(
     val inviteKey: String,
