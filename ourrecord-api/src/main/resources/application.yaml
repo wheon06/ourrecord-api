@@ -6,3 +6,6 @@ spring:
       - db-core.yaml
       - db-s3.yml
       - firebase.yaml
+
+logging:
+  config: classpath:logback/logback.xml
