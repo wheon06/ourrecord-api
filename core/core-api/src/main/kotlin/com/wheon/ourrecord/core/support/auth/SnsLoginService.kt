@@ -13,12 +13,10 @@ class SnsLoginService(
     private val userProvisioner: UserProvisioner,
     private val userSessionManager: UserSessionManager,
     private val authKeyManager: AuthKeyManager,
-    private val kakaoAuthClient: KakaoAuthClient,
     private val kakaoCoreClient: KakaoCoreClient,
 ) {
-    fun kakaoLogin(code: String): LoginResult {
-        val kakaoTokenResult = kakaoAuthClient.getToken(code)
-        val kakaoProfileResult = kakaoCoreClient.getProfile(kakaoTokenResult.accessToken)
+    fun kakaoLogin(accessToken: String): LoginResult {
+        val kakaoProfileResult = kakaoCoreClient.getProfile(accessToken)
 
         val provisionedUser = userProvisioner.getOrProvision(
             SocialProfile(
