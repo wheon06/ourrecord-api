@@ -15,7 +15,7 @@ reviews:
   path_filters:
     - "!**/README.md"
   path_instructions:
-    - path: "**/*Controller*(V[0-9]*)?.ts"
+    - path: "**/*Controller*(V[0-9]*)?.kt"
       instructions: >
         Review the API endpoints based on this guidelines.
 
