@@ -1,9 +1,9 @@
 package com.wheon.ourrecord.core.domain.place
 
 import com.wheon.ourrecord.core.enums.EntityStatus
-import com.wheon.ourrecord.storage.db.core.PlaceRepository
 import com.wheon.ourrecord.core.support.error.CoreException
 import com.wheon.ourrecord.core.support.error.ErrorType
+import com.wheon.ourrecord.storage.db.core.PlaceRepository
 import org.springframework.stereotype.Component
 
 @Component

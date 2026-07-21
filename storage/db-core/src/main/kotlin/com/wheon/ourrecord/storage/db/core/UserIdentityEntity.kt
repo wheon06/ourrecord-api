@@ -15,14 +15,14 @@ import java.time.LocalDateTime
 @Table(
     name = "user_identity",
     indexes = [
-        Index(name = "udx_user_identity_provider_subject", columnList = "provider, providerSubject", unique = true),
+        Index(name = "udx_user_identity_provider_subject", columnList = "providerType, providerSubject", unique = true),
     ],
 )
 class UserIdentityEntity(
     @Column(name = "user_id")
     val userId: Long,
     @Enumerated(EnumType.STRING)
-    val provider: IdentityProviderType,
+    val providerType: IdentityProviderType,
     val providerSubject: String,
     val linkedAt: LocalDateTime,
 ) : BaseIdEntity() {

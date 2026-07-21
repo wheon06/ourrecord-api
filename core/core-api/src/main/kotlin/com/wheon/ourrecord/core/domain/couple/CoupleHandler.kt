@@ -1,9 +1,9 @@
 package com.wheon.ourrecord.core.domain.couple
 
 import com.wheon.ourrecord.core.enums.CoupleInviteState
-import com.wheon.ourrecord.storage.db.core.CoupleInviteRepository
 import com.wheon.ourrecord.core.support.error.CoreException
 import com.wheon.ourrecord.core.support.error.ErrorType
+import com.wheon.ourrecord.storage.db.core.CoupleInviteRepository
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 

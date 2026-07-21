@@ -5,6 +5,4 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name = "`user`")
-class UserEntity(
-    val nickname: String,
-) : BaseEntity()
+class UserEntity : BaseEntity()

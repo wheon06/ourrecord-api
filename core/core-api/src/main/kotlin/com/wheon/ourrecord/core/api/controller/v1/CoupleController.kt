@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 class CoupleController(
     private val coupleService: CoupleService,
 ) {
-    @PostMapping("/v1/couple/{inviteKey}/accept")
+    @PostMapping("/api/v1/couple/{inviteKey}/accept")
     fun acceptInvite(user: User, @PathVariable inviteKey: String): ApiResponse<Any> {
         coupleService.accept(user, inviteKey)
         return ApiResponse.success()

@@ -1,9 +1,9 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
-import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.core.domain.record.RecordImageValidator
 import com.wheon.ourrecord.core.domain.record.RecordService
 import com.wheon.ourrecord.core.domain.user.CoupleUser
+import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.core.support.file.FileUploader
 import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.http.MediaType
@@ -20,7 +20,7 @@ class RecordController(
     private val recordImageValidator: RecordImageValidator,
 ) {
     @PostMapping(
-        value = ["/v1/records/upload/picture"],
+        value = ["/api/v1/records/upload/picture"],
         consumes = [MediaType.MULTIPART_FORM_DATA_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE],
     )
@@ -37,7 +37,7 @@ class RecordController(
         )
     }
 
-    @PostMapping("/v1/records")
+    @PostMapping("/api/v1/records")
     fun addRecord(
         coupleUser: CoupleUser,
         @RequestBody request: com.wheon.ourrecord.core.api.controller.v1.request.AddRecordRequest,

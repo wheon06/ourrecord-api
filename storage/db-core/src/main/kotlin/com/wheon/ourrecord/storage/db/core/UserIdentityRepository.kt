@@ -4,5 +4,5 @@ import com.wheon.ourrecord.core.enums.IdentityProviderType
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserIdentityRepository : JpaRepository<UserIdentityEntity, Long> {
-    fun findByProviderAndProviderSubject(provider: IdentityProviderType, providerSubject: String): UserIdentityEntity?
+    fun findByProviderTypeAndProviderSubject(providerType: IdentityProviderType, providerSubject: String): UserIdentityEntity?
 }

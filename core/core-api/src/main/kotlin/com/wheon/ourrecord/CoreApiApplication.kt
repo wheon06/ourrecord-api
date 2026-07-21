@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.core
+package com.wheon.ourrecord
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
