@@ -1,6 +1,5 @@
 package com.wheon.ourrecord.core.support.auth
 
-import com.wheon.ourrecord.client.kakao.KakaoAuthClient
 import com.wheon.ourrecord.client.kakao.KakaoCoreClient
 import com.wheon.ourrecord.core.domain.UserSessionManager
 import com.wheon.ourrecord.core.enums.AuthKeyType

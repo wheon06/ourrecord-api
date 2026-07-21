@@ -23,7 +23,7 @@ class UserProvisioner(
         if (existing != null) {
             return ProvisionedUser(
                 userId = existing.userId,
-                isNewUser = true,
+                isNewUser = false,
             )
         }
 
@@ -40,7 +40,7 @@ class UserProvisioner(
 
         return ProvisionedUser(
             userId = savedUser.id,
-            isNewUser = false,
+            isNewUser = true,
         )
     }
 }
