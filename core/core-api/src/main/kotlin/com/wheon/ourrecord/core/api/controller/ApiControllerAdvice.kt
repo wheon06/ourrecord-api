@@ -14,11 +14,11 @@ class ApiControllerAdvice {
     private val log = LoggerFactory.getLogger(this::class.java)
 
     @ExceptionHandler(CoreException::class)
-    fun handleApiException(e: CoreException): ResponseEntity<ApiResponse<Any>> {
+    fun handleCoreException(e: CoreException): ResponseEntity<ApiResponse<Any>> {
         when (e.errorType.logLevel) {
-            LogLevel.ERROR -> log.error("[ApiException] {}", e.errorType.message, e)
-            LogLevel.WARN -> log.warn("[ApiException] {}", e.errorType.message, e)
-            else -> log.info("[ApiException] {}", e.errorType.message, e)
+            LogLevel.ERROR -> log.error("[CoreException] {}", e.errorType.message, e)
+            LogLevel.WARN -> log.warn("[CoreException] {}", e.errorType.message, e)
+            else -> log.info("[CoreException] {}", e.errorType.message, e)
         }
         return ResponseEntity(ApiResponse.error(e.errorType), e.errorType.status)
     }
