@@ -18,7 +18,5 @@ class SnsLoginService(
     fun kakaoLogin(code: String) {
         val kakaoTokenResult = kakaoAuthClient.getToken(code)
         val kakaoProfileResult = kakaoCoreClient.getProfile(kakaoTokenResult.accessToken)
-
-
     }
 }

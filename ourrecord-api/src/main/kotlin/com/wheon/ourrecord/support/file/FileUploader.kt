@@ -2,8 +2,6 @@ package com.wheon.ourrecord.support.file
 
 import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.storage.db.s3.S3Uploader
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 
@@ -13,9 +11,8 @@ class FileUploader(
     private val mediaAssetUrlResolver: MediaAssetUrlResolver,
 ) {
     fun uploadFile(resourceType: ResourceType, file: MultipartFile): UploadResult {
-        val originalFilename = file.originalFilename ?: throw ApiException(ErrorType.RECORD_IMAGE_INVALID)
         val objectKey = s3Uploader.uploadFile(
-            objectKey = ObjectKeyGenerator.generate(originalFilename, resourceType),
+            objectKey = ObjectKeyGenerator.generate(file, resourceType),
             file = file,
         )
 
