@@ -20,18 +20,21 @@ class SnsLoginService(
         val kakaoTokenResult = kakaoAuthClient.getToken(code)
         val kakaoProfileResult = kakaoCoreClient.getProfile(kakaoTokenResult.accessToken)
 
-        val userId = userProvisioner.getOrProvision(
+        val provisionedUser = userProvisioner.getOrProvision(
             SocialProfile(
                 providerType = IdentityProviderType.KAKAO,
                 providerUserId = kakaoProfileResult.id,
             ),
         )
-        val sessionId = userSessionManager.create(userId)
+        val sessionId = userSessionManager.create(
+            userId = provisionedUser.userId,
+        )
 
         return LoginResult(
-            userId = userId,
-            accessKey = authKeyManager.issue(userId, sessionId, AuthKeyType.ACCESS),
-            refreshKey = authKeyManager.issue(userId, sessionId, AuthKeyType.REFRESH),
+            userId = provisionedUser.userId,
+            accessKey = authKeyManager.issue(provisionedUser.userId, sessionId, AuthKeyType.ACCESS),
+            refreshKey = authKeyManager.issue(provisionedUser.userId, sessionId, AuthKeyType.REFRESH),
+            isNewUser = provisionedUser.isNewUser,
         )
     }
 }

@@ -1,8 +1,6 @@
 package com.wheon.ourrecord.core.support.auth
 
-data class LoginResult(
+data class ProvisionedUser(
     val userId: Long,
-    val accessKey: String,
-    val refreshKey: String,
     val isNewUser: Boolean,
 )

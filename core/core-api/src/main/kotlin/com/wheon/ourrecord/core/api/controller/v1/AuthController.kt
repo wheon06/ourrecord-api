@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
-import com.wheon.ourrecord.core.api.controller.v1.response.AuthKeyResponse
+import com.wheon.ourrecord.core.support.auth.LoginResult
 import com.wheon.ourrecord.core.support.auth.SnsLoginService
 import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.slf4j.LoggerFactory
@@ -17,13 +17,9 @@ class AuthController(
     @GetMapping("/api/v1/auth/kakao")
     fun loginWithKakao(
         @RequestParam code: String,
-    ): ApiResponse<AuthKeyResponse> {
-        val loginResult = snsLoginService.kakaoLogin(code)
+    ): ApiResponse<LoginResult> {
         return ApiResponse.success(
-            AuthKeyResponse(
-                accessKey = loginResult.accessKey,
-                refreshKey = loginResult.refreshKey,
-            ),
+            snsLoginService.kakaoLogin(code),
         )
     }
 }

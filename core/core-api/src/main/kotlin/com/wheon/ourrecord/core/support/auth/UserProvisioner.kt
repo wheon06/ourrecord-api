@@ -14,14 +14,17 @@ class UserProvisioner(
     private val userAuthIdentityRepository: UserIdentityRepository,
 ) {
     @Transactional
-    fun getOrProvision(profile: SocialProfile): Long {
+    fun getOrProvision(profile: SocialProfile): ProvisionedUser {
         val existing = userAuthIdentityRepository.findByProviderTypeAndProviderSubject(
             providerType = profile.providerType,
             providerSubject = profile.providerUserId,
         )
 
         if (existing != null) {
-            return existing.userId
+            return ProvisionedUser(
+                userId = existing.userId,
+                isNewUser = true,
+            )
         }
 
         val savedUser = userRepository.save(UserEntity())
@@ -35,6 +38,9 @@ class UserProvisioner(
             ),
         )
 
-        return savedUser.id
+        return ProvisionedUser(
+            userId = savedUser.id,
+            isNewUser = false,
+        )
     }
 }
