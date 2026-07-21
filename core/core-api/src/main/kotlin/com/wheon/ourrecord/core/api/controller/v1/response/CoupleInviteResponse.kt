@@ -11,7 +11,7 @@ data class CoupleInviteResponse(
     val createdAt: LocalDateTime,
 ) {
     companion object {
-        fun of(access: CoupleInvite) = com.wheon.ourrecord.core.api.controller.v1.response.CoupleInviteResponse(
+        fun of(access: CoupleInvite) = CoupleInviteResponse(
             inviteKey = access.inviteKey,
             userId = access.userId,
             state = access.state,
