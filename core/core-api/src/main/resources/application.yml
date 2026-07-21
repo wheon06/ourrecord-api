@@ -1,3 +1,5 @@
+spring.profiles.active: default
+
 spring:
   config:
     import:
@@ -6,6 +8,4 @@ spring:
       - db-core.yml
       - db-s3.yml
       - firebase.yml
-
-logging:
-  config: classpath:logback/logback.xml
+      - logging.yml
