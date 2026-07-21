@@ -11,11 +11,11 @@ data class KakaoProfileResponseDto(
     fun toResult(): KakaoClientProfileResult {
         return KakaoClientProfileResult(
             id = id,
-            name = kakaoAccount.name,
+            email = kakaoAccount.email,
         )
     }
 
     data class KakaoAccount(
-        val name: String,
+        val email: String,
     )
 }
