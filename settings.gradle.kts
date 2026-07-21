@@ -1,12 +1,13 @@
 rootProject.name = "ourrecord"
 
 include(
-    ":ourrecord-api",
-    ":core-enum",
+    ":core:core-api",
+    ":core:core-enum",
     ":clients:client-kakao",
     ":clients:client-naver",
     ":storage:db-core",
-    ":storage:db-s3"
+    ":storage:db-s3",
+    ":support:logging"
 )
 
 pluginManagement {

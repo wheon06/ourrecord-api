@@ -1,0 +1,11 @@
+spring:
+  config:
+    import:
+      - client-kakao.yml
+      - client-naver.yml
+      - db-core.yml
+      - db-s3.yml
+      - firebase.yml
+
+logging:
+  config: classpath:logback/logback.xml
