@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain.place
+package com.wheon.ourrecord.core.domain.place
 
 import java.math.BigDecimal
 

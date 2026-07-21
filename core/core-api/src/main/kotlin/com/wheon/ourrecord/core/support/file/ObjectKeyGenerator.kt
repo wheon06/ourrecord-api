@@ -1,8 +1,8 @@
-package com.wheon.ourrecord.support.file
+package com.wheon.ourrecord.core.support.file
 
 import com.wheon.ourrecord.core.enums.ResourceType
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import org.springframework.util.StringUtils
 import org.springframework.web.multipart.MultipartFile
 import java.time.LocalDate
@@ -21,7 +21,7 @@ class ObjectKeyGenerator {
             val date = LocalDate.now(KST).format(DATE_FORMATTER)
             val generatedName = UUID.randomUUID().toString().replace("-", "")
             val extension = StringUtils.getFilenameExtension(file.originalFilename)
-                ?: throw ApiException(ErrorType.RECORD_IMAGE_INVALID)
+                ?: throw CoreException(ErrorType.RECORD_IMAGE_INVALID)
             return "${resourceType.resourceName}/$date/$generatedName.$extension"
         }
     }

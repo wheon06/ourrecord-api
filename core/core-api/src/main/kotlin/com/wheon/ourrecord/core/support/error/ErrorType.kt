@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.error
+package com.wheon.ourrecord.core.support.error
 
 import org.springframework.boot.logging.LogLevel
 import org.springframework.http.HttpStatus

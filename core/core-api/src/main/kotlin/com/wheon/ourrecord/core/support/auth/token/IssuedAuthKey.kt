@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.auth.token
+package com.wheon.ourrecord.core.support.auth.token
 
 data class IssuedAuthKey(
     val accessKey: String,

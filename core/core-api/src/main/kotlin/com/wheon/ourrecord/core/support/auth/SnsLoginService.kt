@@ -1,9 +1,9 @@
-package com.wheon.ourrecord.support.auth
+package com.wheon.ourrecord.core.support.auth
 
 import com.wheon.ourrecord.client.kakao.KakaoAuthClient
 import com.wheon.ourrecord.client.kakao.KakaoCoreClient
-import com.wheon.ourrecord.domain.UserSessionManager
-import com.wheon.ourrecord.support.auth.token.AuthKeyManager
+import com.wheon.ourrecord.core.domain.UserSessionManager
+import com.wheon.ourrecord.core.support.auth.token.AuthKeyManager
 import org.springframework.stereotype.Service
 
 @Service

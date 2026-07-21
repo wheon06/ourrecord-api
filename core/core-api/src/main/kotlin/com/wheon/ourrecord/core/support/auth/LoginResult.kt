@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.auth
+package com.wheon.ourrecord.core.support.auth
 
 data class LoginResult(
     val userId: Long,

@@ -1,8 +1,8 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
-import com.wheon.ourrecord.domain.couple.CoupleService
-import com.wheon.ourrecord.domain.user.User
-import com.wheon.ourrecord.support.response.ApiResponse
+import com.wheon.ourrecord.core.domain.couple.CoupleService
+import com.wheon.ourrecord.core.domain.user.User
+import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController

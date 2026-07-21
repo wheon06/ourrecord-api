@@ -1,6 +1,6 @@
-package com.wheon.ourrecord.domain.record
+package com.wheon.ourrecord.core.domain.record
 
-import com.wheon.ourrecord.domain.place.AddPlace
+import com.wheon.ourrecord.core.domain.place.AddPlace
 import java.time.LocalDate
 
 data class UpdateRecord(

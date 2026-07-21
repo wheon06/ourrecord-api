@@ -1,7 +1,7 @@
 package com.wheon.ourrecord.core.api.config
 
-import com.wheon.ourrecord.support.auth.CoupleUserArgumentResolver
-import com.wheon.ourrecord.support.auth.UserArgumentResolver
+import com.wheon.ourrecord.core.support.auth.CoupleUserArgumentResolver
+import com.wheon.ourrecord.core.support.auth.UserArgumentResolver
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer

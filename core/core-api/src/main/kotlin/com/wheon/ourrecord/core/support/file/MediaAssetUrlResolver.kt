@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.file
+package com.wheon.ourrecord.core.support.file
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component

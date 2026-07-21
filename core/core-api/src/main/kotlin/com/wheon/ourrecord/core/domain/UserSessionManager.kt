@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain
+package com.wheon.ourrecord.core.domain
 
 import com.wheon.ourrecord.storage.db.core.UserSessionRepository
 import org.springframework.stereotype.Component

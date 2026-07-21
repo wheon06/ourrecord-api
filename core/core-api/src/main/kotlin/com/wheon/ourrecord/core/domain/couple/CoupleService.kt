@@ -1,6 +1,6 @@
-package com.wheon.ourrecord.domain.couple
+package com.wheon.ourrecord.core.domain.couple
 
-import com.wheon.ourrecord.domain.user.User
+import com.wheon.ourrecord.core.domain.user.User
 import org.springframework.stereotype.Service
 
 @Service

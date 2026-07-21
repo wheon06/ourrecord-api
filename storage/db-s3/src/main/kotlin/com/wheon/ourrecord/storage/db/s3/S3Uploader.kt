@@ -10,11 +10,11 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest
 class S3Uploader(
     private val s3Client: S3Client,
 ) {
-    fun uploadFile(objectKey: String, file: MultipartFile): String {
+    fun uploadFile(file: MultipartFile, bucket: String, objectKey: String): String {
         s3Client.putObject(
             PutObjectRequest
                 .builder()
-                .bucket("ourrecord")
+                .bucket(bucket)
                 .key(objectKey)
                 .contentType(file.contentType)
                 .build(),

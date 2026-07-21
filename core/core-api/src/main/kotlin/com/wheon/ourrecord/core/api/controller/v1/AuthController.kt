@@ -1,9 +1,9 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
 import com.wheon.ourrecord.storage.db.core.AuthKeyRepository
-import com.wheon.ourrecord.support.auth.SnsLoginService
-import com.wheon.ourrecord.support.auth.token.AuthKeyManager
-import com.wheon.ourrecord.support.response.ApiResponse
+import com.wheon.ourrecord.core.support.auth.SnsLoginService
+import com.wheon.ourrecord.core.support.auth.token.AuthKeyManager
+import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.GetMapping

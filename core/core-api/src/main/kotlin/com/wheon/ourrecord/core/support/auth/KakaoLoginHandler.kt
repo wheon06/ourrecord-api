@@ -1,7 +1,8 @@
-package com.wheon.ourrecord.support.auth
+package com.wheon.ourrecord.core.support.auth
 
 import com.wheon.ourrecord.client.kakao.KakaoCoreClient
 import com.wheon.ourrecord.core.enums.IdentityProviderType
+import com.wheon.ourrecord.core.support.auth.SocialProfile
 import org.springframework.stereotype.Component
 
 @Component

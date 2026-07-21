@@ -1,7 +1,7 @@
-package com.wheon.ourrecord.domain.record
+package com.wheon.ourrecord.core.domain.record
 
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 
@@ -17,7 +17,7 @@ class RecordImageValidator {
 
     fun validate(file: MultipartFile) {
         if (file.isEmpty) {
-            throw ApiException(ErrorType.RECORD_IMAGE_INVALID)
+            throw CoreException(ErrorType.RECORD_IMAGE_INVALID)
         }
 
         val header = file.inputStream.use { it.readNBytes(4) }
@@ -26,7 +26,7 @@ class RecordImageValidator {
                 signature.indices.all { index -> header[index] == signature[index] }
         }
         if (!signatureMatches) {
-            throw ApiException(ErrorType.RECORD_IMAGE_INVALID)
+            throw CoreException(ErrorType.RECORD_IMAGE_INVALID)
         }
     }
 }

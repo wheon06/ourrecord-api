@@ -2,17 +2,17 @@ package com.wheon.ourrecord.core.api.controller.v1.request
 
 import com.wheon.ourrecord.core.enums.PlaceSource
 import com.wheon.ourrecord.core.enums.ResourceType
-import com.wheon.ourrecord.domain.place.AddPlace
-import com.wheon.ourrecord.domain.record.NewRecord
-import com.wheon.ourrecord.domain.record.NewRecordMedia
-import com.wheon.ourrecord.domain.record.RecordContent
-import com.wheon.ourrecord.domain.record.RecordImagePolicy
-import com.wheon.ourrecord.domain.record.RecordTarget
-import com.wheon.ourrecord.domain.record.UpdateRecord
-import com.wheon.ourrecord.domain.record.UpdateRecordDetails
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
-import com.wheon.ourrecord.support.file.ImageHandle
+import com.wheon.ourrecord.core.domain.place.AddPlace
+import com.wheon.ourrecord.core.domain.record.NewRecord
+import com.wheon.ourrecord.core.domain.record.NewRecordMedia
+import com.wheon.ourrecord.core.domain.record.RecordContent
+import com.wheon.ourrecord.core.domain.record.RecordImagePolicy
+import com.wheon.ourrecord.core.domain.record.RecordTarget
+import com.wheon.ourrecord.core.domain.record.UpdateRecord
+import com.wheon.ourrecord.core.domain.record.UpdateRecordDetails
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
+import com.wheon.ourrecord.core.support.file.ImageHandle
 import java.math.BigDecimal
 import java.time.LocalDate
 
@@ -28,8 +28,8 @@ data class AddRecordRequest(
     }
 
     fun toContent(): RecordContent {
-        if (title.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
-        if (content.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
+        if (title.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
+        if (content.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
 
         return RecordContent(
             title = title,
@@ -58,9 +58,9 @@ data class AddRecordPlaceRequest(
     val externalPlaceId: String,
 ) {
     fun toAddPlace(): AddPlace {
-        if (name.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
-        if (address.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
-        if (externalPlaceId.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
+        if (name.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
+        if (address.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
+        if (externalPlaceId.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
 
         return AddPlace(
             source = source,
@@ -83,8 +83,8 @@ data class UpdateRecordRequest(
     val images: List<Long>?,
 ) {
     fun toUpdateRecord(): UpdateRecord {
-        if (title.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
-        if (content.isBlank()) throw ApiException(ErrorType.INVALID_REQUEST)
+        if (title.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
+        if (content.isBlank()) throw CoreException(ErrorType.INVALID_REQUEST)
 
         val imageIds = images ?: emptyList()
         com.wheon.ourrecord.core.api.controller.v1.request.validateRecordImageIds(imageIds)
@@ -142,9 +142,9 @@ data class UpdateRecordDetailsRequest(
 
 private fun validateRecordImageIds(imageIds: List<Long>) {
     if (imageIds.size < RecordImagePolicy.MIN_IMAGE_COUNT) {
-        throw ApiException(ErrorType.INVALID_REQUEST)
+        throw CoreException(ErrorType.INVALID_REQUEST)
     }
     if (imageIds.size > RecordImagePolicy.MAX_IMAGE_COUNT) {
-        throw ApiException(ErrorType.INVALID_REQUEST)
+        throw CoreException(ErrorType.INVALID_REQUEST)
     }
 }

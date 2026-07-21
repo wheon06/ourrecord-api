@@ -1,8 +1,8 @@
 package com.wheon.ourrecord.core.api.controller
 
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
-import com.wheon.ourrecord.support.response.ApiResponse
+import com.wheon.ourrecord.core.support.response.ApiResponse
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import org.slf4j.LoggerFactory
 import org.springframework.boot.logging.LogLevel
 import org.springframework.http.ResponseEntity
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class ApiControllerAdvice {
     private val log = LoggerFactory.getLogger(this::class.java)
 
-    @ExceptionHandler(ApiException::class)
-    fun handleApiException(e: ApiException): ResponseEntity<ApiResponse<Any>> {
+    @ExceptionHandler(CoreException::class)
+    fun handleApiException(e: CoreException): ResponseEntity<ApiResponse<Any>> {
         when (e.errorType.logLevel) {
             LogLevel.ERROR -> log.error("[ApiException] {}", e.errorType.message, e)
             LogLevel.WARN -> log.warn("[ApiException] {}", e.errorType.message, e)

@@ -1,11 +1,11 @@
-package com.wheon.ourrecord.support.auth.token
+package com.wheon.ourrecord.core.support.auth.token
 
 import com.wheon.ourrecord.core.enums.AuthKeyState
 import com.wheon.ourrecord.core.enums.AuthKeyType
 import com.wheon.ourrecord.storage.db.core.AuthKeyEntity
 import com.wheon.ourrecord.storage.db.core.AuthKeyRepository
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
@@ -46,8 +46,8 @@ class AuthKeyManager(
             sessionId = sessionId,
             key = refreshKey,
             type = AuthKeyType.REFRESH,
-        ) ?: throw ApiException(ErrorType.REFRESH_KEY_INVALID)
-        if (!existingRefreshKey.isActive()) throw ApiException(ErrorType.REFRESH_KEY_INVALID)
+        ) ?: throw CoreException(ErrorType.REFRESH_KEY_INVALID)
+        if (!existingRefreshKey.isActive()) throw CoreException(ErrorType.REFRESH_KEY_INVALID)
 
         authKeyRepository.findByUserIdAndSessionIdAndTypeAndState(
             userId = userId,
@@ -66,8 +66,8 @@ class AuthKeyManager(
 
     fun verify(authKey: String): Long {
         val accessKey = authKeyRepository.findByKeyAndType(authKey, AuthKeyType.ACCESS)
-            ?: throw ApiException(ErrorType.AUTHENTICATED_SESSION_EXPIRED)
-        if (!accessKey.isActive()) throw ApiException(ErrorType.AUTHENTICATED_SESSION_EXPIRED)
+            ?: throw CoreException(ErrorType.AUTHENTICATED_SESSION_EXPIRED)
+        if (!accessKey.isActive()) throw CoreException(ErrorType.AUTHENTICATED_SESSION_EXPIRED)
         return accessKey.userId
     }
 }

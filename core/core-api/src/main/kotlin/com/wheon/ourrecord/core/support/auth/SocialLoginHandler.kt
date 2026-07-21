@@ -1,7 +1,7 @@
-package com.wheon.ourrecord.support.auth
+package com.wheon.ourrecord.core.support.auth
 
-import com.wheon.ourrecord.domain.UserAuthIdentityFinder
-import com.wheon.ourrecord.domain.UserManager
+import com.wheon.ourrecord.core.domain.UserAuthIdentityFinder
+import com.wheon.ourrecord.core.domain.UserManager
 import org.springframework.stereotype.Component
 
 @Component

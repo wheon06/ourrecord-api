@@ -1,7 +1,7 @@
-package com.wheon.ourrecord.domain.record
+package com.wheon.ourrecord.core.domain.record
 
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import java.time.LocalDate
 import java.util.Base64
 
@@ -25,7 +25,7 @@ data class RecordTimelineCursor(
             return runCatching {
                 val decoded = String(Base64.getUrlDecoder().decode(cursor), Charsets.UTF_8)
                 val parts = decoded.split(DELIMITER)
-                if (parts.size != CURSOR_PART_SIZE) throw ApiException(ErrorType.INVALID_REQUEST)
+                if (parts.size != CURSOR_PART_SIZE) throw CoreException(ErrorType.INVALID_REQUEST)
 
                 RecordTimelineCursor(
                     visitedOn = LocalDate.parse(parts[0]),
@@ -33,8 +33,8 @@ data class RecordTimelineCursor(
                     sortOrder = parts[2].toInt(),
                 )
             }.getOrElse {
-                if (it is ApiException) throw it
-                throw ApiException(ErrorType.INVALID_REQUEST)
+                if (it is CoreException) throw it
+                throw CoreException(ErrorType.INVALID_REQUEST)
             }
         }
     }

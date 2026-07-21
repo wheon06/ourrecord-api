@@ -1,6 +1,6 @@
-package com.wheon.ourrecord.domain.place
+package com.wheon.ourrecord.core.domain.place
 
-import com.wheon.ourrecord.domain.record.RecordMediaReader
+import com.wheon.ourrecord.core.domain.record.RecordMediaReader
 import com.wheon.ourrecord.storage.db.core.CouplePlaceRepository
 import org.springframework.stereotype.Component
 

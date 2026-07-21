@@ -1,11 +1,11 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
 import com.wheon.ourrecord.core.enums.ResourceType
-import com.wheon.ourrecord.domain.record.RecordImageValidator
-import com.wheon.ourrecord.domain.record.RecordService
-import com.wheon.ourrecord.domain.user.CoupleUser
-import com.wheon.ourrecord.support.file.FileUploader
-import com.wheon.ourrecord.support.response.ApiResponse
+import com.wheon.ourrecord.core.domain.record.RecordImageValidator
+import com.wheon.ourrecord.core.domain.record.RecordService
+import com.wheon.ourrecord.core.domain.user.CoupleUser
+import com.wheon.ourrecord.core.support.file.FileUploader
+import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

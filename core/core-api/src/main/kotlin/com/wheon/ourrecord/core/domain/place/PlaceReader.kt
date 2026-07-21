@@ -1,9 +1,9 @@
-package com.wheon.ourrecord.domain.place
+package com.wheon.ourrecord.core.domain.place
 
 import com.wheon.ourrecord.core.enums.EntityStatus
 import com.wheon.ourrecord.storage.db.core.PlaceRepository
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import org.springframework.stereotype.Component
 
 @Component
@@ -12,7 +12,7 @@ class PlaceReader(
 ) {
     fun getPlace(placeId: Long): Place {
         val entity = placeRepository.findByIdAndStatus(placeId, EntityStatus.ACTIVE)
-            ?: throw ApiException(ErrorType.NOT_FOUND_DATA)
+            ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
 
         return Place(
             id = entity.id,

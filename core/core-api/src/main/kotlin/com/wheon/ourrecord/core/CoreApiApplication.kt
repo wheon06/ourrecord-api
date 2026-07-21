@@ -1,4 +1,4 @@
-package com.wheon.ourrecord
+package com.wheon.ourrecord.core
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
@@ -6,8 +6,8 @@ import org.springframework.boot.runApplication
 
 @ConfigurationPropertiesScan
 @SpringBootApplication
-class OurrecordApiApplication
+class CoreApiApplication
 
 fun main(args: Array<String>) {
-    runApplication<OurrecordApiApplication>(*args)
+    runApplication<CoreApiApplication>(*args)
 }

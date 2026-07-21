@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain.record
+package com.wheon.ourrecord.core.domain.record
 
 import java.time.LocalDate
 

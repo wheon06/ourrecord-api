@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.auth
+package com.wheon.ourrecord.core.support.auth
 
 import com.wheon.ourrecord.core.enums.IdentityProviderType
 

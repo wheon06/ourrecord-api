@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.push
+package com.wheon.ourrecord.core.support.push
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.bind.ConstructorBinding

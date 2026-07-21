@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.push
+package com.wheon.ourrecord.core.support.push
 
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.FirebaseApp

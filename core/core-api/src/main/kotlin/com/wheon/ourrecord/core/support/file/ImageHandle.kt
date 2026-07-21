@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.file
+package com.wheon.ourrecord.core.support.file
 
 data class ImageHandle(
     val addImageIds: List<Long>,

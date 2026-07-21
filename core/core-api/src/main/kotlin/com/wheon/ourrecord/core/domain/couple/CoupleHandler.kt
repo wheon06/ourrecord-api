@@ -1,9 +1,9 @@
-package com.wheon.ourrecord.domain.couple
+package com.wheon.ourrecord.core.domain.couple
 
 import com.wheon.ourrecord.core.enums.CoupleInviteState
 import com.wheon.ourrecord.storage.db.core.CoupleInviteRepository
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
@@ -14,8 +14,8 @@ class CoupleHandler(
 ) {
     @Transactional
     fun accept(userId: Long, inviteKey: String) {
-        val invite = coupleInviteRepository.findByInviteKey(inviteKey) ?: throw ApiException(ErrorType.NOT_FOUND_DATA)
-        if (invite.state != CoupleInviteState.PENDING) throw ApiException(ErrorType.INVITE_STATE_INVALID)
+        val invite = coupleInviteRepository.findByInviteKey(inviteKey) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
+        if (invite.state != CoupleInviteState.PENDING) throw CoreException(ErrorType.INVITE_STATE_INVALID)
 
         invite.accepted()
 

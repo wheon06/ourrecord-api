@@ -1,6 +1,6 @@
-package com.wheon.ourrecord.domain.place
+package com.wheon.ourrecord.core.domain.place
 
-import com.wheon.ourrecord.domain.record.RecordReader
+import com.wheon.ourrecord.core.domain.record.RecordReader
 import org.springframework.stereotype.Service
 
 @Service

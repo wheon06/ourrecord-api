@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.domain.couple
+package com.wheon.ourrecord.core.domain.couple
 
 sealed interface UserPendingInvite {
     data object None : UserPendingInvite

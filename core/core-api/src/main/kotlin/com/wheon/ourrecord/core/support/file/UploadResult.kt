@@ -1,4 +1,4 @@
-package com.wheon.ourrecord.support.file
+package com.wheon.ourrecord.core.support.file
 
 data class UploadResult(
     val url: String,

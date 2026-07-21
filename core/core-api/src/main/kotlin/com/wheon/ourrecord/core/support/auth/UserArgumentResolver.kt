@@ -1,9 +1,9 @@
-package com.wheon.ourrecord.support.auth
+package com.wheon.ourrecord.core.support.auth
 
-import com.wheon.ourrecord.domain.user.User
-import com.wheon.ourrecord.support.auth.token.AuthKeyManager
-import com.wheon.ourrecord.support.error.ApiException
-import com.wheon.ourrecord.support.error.ErrorType
+import com.wheon.ourrecord.core.domain.user.User
+import com.wheon.ourrecord.core.support.auth.token.AuthKeyManager
+import com.wheon.ourrecord.core.support.error.CoreException
+import com.wheon.ourrecord.core.support.error.ErrorType
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.core.MethodParameter
 import org.springframework.http.HttpHeaders
@@ -23,12 +23,12 @@ class UserArgumentResolver(
     }
 
     override fun resolveArgument(parameter: MethodParameter, mavContainer: ModelAndViewContainer?, webRequest: NativeWebRequest, binderFactory: WebDataBinderFactory?): User {
-        val request = webRequest.getNativeRequest(HttpServletRequest::class.java) ?: throw ApiException(ErrorType.INVALID_REQUEST)
+        val request = webRequest.getNativeRequest(HttpServletRequest::class.java) ?: throw CoreException(ErrorType.INVALID_REQUEST)
 
         val authKey = request.getHeader(HttpHeaders.AUTHORIZATION)
             ?.takeIf { it.startsWith("Bearer ") }
             ?.substringAfter(' ')
-            ?: throw ApiException(ErrorType.AUTHENTICATED_SESSION_EXPIRED)
+            ?: throw CoreException(ErrorType.AUTHENTICATED_SESSION_EXPIRED)
 
         return User(
             id = authKeyManager.verify(authKey),

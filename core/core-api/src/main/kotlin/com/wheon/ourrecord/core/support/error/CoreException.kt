@@ -1,5 +1,5 @@
-package com.wheon.ourrecord.support.error
+package com.wheon.ourrecord.core.support.error
 
-class ApiException(
+class CoreException(
     val errorType: ErrorType,
 ) : RuntimeException(errorType.message)
