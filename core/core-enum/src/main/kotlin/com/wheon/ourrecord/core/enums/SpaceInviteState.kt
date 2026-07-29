@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.core.enums
 
-enum class CoupleInviteState {
+enum class SpaceInviteState {
     PENDING,
     ACCEPTED,
 }

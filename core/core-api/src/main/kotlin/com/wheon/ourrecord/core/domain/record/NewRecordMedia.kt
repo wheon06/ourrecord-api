@@ -3,21 +3,20 @@ package com.wheon.ourrecord.core.domain.record
 import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.core.support.error.CoreException
 import com.wheon.ourrecord.core.support.error.ErrorType
+import com.wheon.ourrecord.core.support.file.StorageServe
 
 data class NewRecordMedia(
     val resourceType: ResourceType,
     val url: String,
 ) {
-    companion object {
-        private const val MEDIA_URL_PREFIX = "https://14.6.152.212:9000/ourrecord/"
-    }
+    private val mediaUrlPrefix = "${StorageServe.CDN}/${StorageServe.BUCKET}/"
 
     init {
-        if (!url.startsWith(MEDIA_URL_PREFIX)) {
+        if (!url.startsWith(mediaUrlPrefix)) {
             throw CoreException(ErrorType.RECORD_BAD_IMAGE)
         }
 
-        val resourceName = url.removePrefix(MEDIA_URL_PREFIX).substringBefore("/")
+        val resourceName = url.removePrefix(mediaUrlPrefix).substringBefore("/")
         if (resourceName != resourceType.resourceName) {
             throw CoreException(ErrorType.RECORD_BAD_IMAGE)
         }

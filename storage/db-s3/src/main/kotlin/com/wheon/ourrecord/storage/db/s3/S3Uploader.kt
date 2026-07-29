@@ -21,6 +21,6 @@ class S3Uploader(
             RequestBody.fromInputStream(file.inputStream, file.size),
         )
 
-        return objectKey
+        return "$bucket/$objectKey"
     }
 }

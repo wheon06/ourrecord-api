@@ -7,9 +7,9 @@ import java.time.LocalDate
 @Entity
 @Table(name = "record")
 class RecordEntity(
-    val userId: Long,
-    val coupleId: Long,
-    val couplePlaceId: Long,
+    val spaceId: Long,
+    val spaceMemberId: Long,
+    val spacePlaceId: Long,
     val title: String,
     val content: String,
     val visitedOn: LocalDate,

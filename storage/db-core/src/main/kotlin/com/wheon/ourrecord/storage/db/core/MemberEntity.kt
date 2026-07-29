@@ -4,9 +4,10 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "record_media")
-class RecordMediaEntity(
-    val recordId: Long,
+@Table(name = "space_member")
+class MemberEntity(
     val spaceId: Long,
-    val mediaUrl: String,
+    val userId: Long,
+    val nickname: String,
+    val emoji: String,
 ) : BaseEntity()

@@ -15,8 +15,6 @@ class ObjectKeyGenerator {
         private val KST: ZoneId = ZoneId.of("Asia/Seoul")
         private val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.BASIC_ISO_DATE
 
-        const val BUCKET_NAME = "ourrecord"
-
         fun generate(file: MultipartFile, resourceType: ResourceType): String {
             val date = LocalDate.now(KST).format(DATE_FORMATTER)
             val generatedName = UUID.randomUUID().toString().replace("-", "")

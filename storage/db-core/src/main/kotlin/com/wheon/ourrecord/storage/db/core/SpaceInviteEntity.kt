@@ -1,6 +1,6 @@
 package com.wheon.ourrecord.storage.db.core
 
-import com.wheon.ourrecord.core.enums.CoupleInviteState
+import com.wheon.ourrecord.core.enums.SpaceInviteState
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -9,21 +9,22 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(
-    name = "couple_invite",
+    name = "space_invite",
     indexes = [
-        Index(name = "udx_couple_invite_key", columnList = "inviteKey", unique = true),
+        Index(name = "udx_space_invite_key", columnList = "inviteKey", unique = true),
     ],
 )
-class CoupleInviteEntity(
+class SpaceInviteEntity(
     val inviteKey: String,
     val userId: Long,
-    state: CoupleInviteState,
+    val spaceId: Long,
+    state: SpaceInviteState,
 ) : BaseNoStatusEntity() {
     @Enumerated(EnumType.STRING)
-    var state: CoupleInviteState = state
+    var state: SpaceInviteState = state
         protected set
 
     fun accepted() {
-        state = CoupleInviteState.ACCEPTED
+        state = SpaceInviteState.ACCEPTED
     }
 }

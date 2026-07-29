@@ -4,6 +4,8 @@ import com.wheon.ourrecord.client.kakao.KakaoAuthClient
 import com.wheon.ourrecord.core.support.auth.LoginResult
 import com.wheon.ourrecord.core.support.auth.SnsLoginService
 import com.wheon.ourrecord.core.support.response.ApiResponse
+import com.wheon.ourrecord.storage.db.core.AuthKeyRepository
+import com.wheon.ourrecord.storage.db.core.SpaceRepository
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController
 class AuthController(
     private val snsLoginService: SnsLoginService,
     private val kakaoAuthClient: KakaoAuthClient,
+    private val authKeyRepository: AuthKeyRepository,
+    private val spaceRepository: SpaceRepository,
 ) {
-    private val log = LoggerFactory.getLogger(AuthController::class.java)
+    val log = LoggerFactory.getLogger(AuthController::class.java)
 
     @PostMapping("/api/v1/auth/kakao")
     fun loginWithKakao(
@@ -34,5 +38,11 @@ class AuthController(
         return ApiResponse.success(
             snsLoginService.kakaoLogin(kakaoTokenResult.accessToken),
         )
+    }
+
+    @GetMapping("/test")
+    fun ass() {
+        authKeyRepository.findAll()
+        spaceRepository.findAll()
     }
 }

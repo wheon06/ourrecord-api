@@ -4,12 +4,12 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "couple_place")
-class CouplePlaceEntity(
-    val coupleId: Long,
+@Table(name = "space_place")
+class SpacePlaceEntity(
+    val userId: Long,
+    val spaceId: Long,
     val placeId: Long,
     categoryCode: String?,
-    val savedByMemberId: Long,
 ) : BaseEntity() {
     var categoryCode: String? = categoryCode
         protected set

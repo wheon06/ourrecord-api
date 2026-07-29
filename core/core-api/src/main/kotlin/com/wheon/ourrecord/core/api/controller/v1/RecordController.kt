@@ -1,10 +1,12 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
+import com.wheon.ourrecord.core.api.controller.v1.request.AddRecordRequest
 import com.wheon.ourrecord.core.domain.record.RecordImageValidator
 import com.wheon.ourrecord.core.domain.record.RecordService
-import com.wheon.ourrecord.core.domain.user.CoupleUser
+import com.wheon.ourrecord.core.domain.user.User
 import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.core.support.file.FileUploader
+import com.wheon.ourrecord.core.support.file.StorageServe
 import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,25 +27,27 @@ class RecordController(
         produces = [MediaType.APPLICATION_JSON_VALUE],
     )
     fun uploadRecordPicture(
-        coupleUser: CoupleUser,
+        user: User,
         @RequestPart file: MultipartFile,
     ): ApiResponse<String> {
         recordImageValidator.validate(file)
+        val uploadResult = fileUploader.uploadFile(
+            resourceType = ResourceType.RECORD,
+            file = file,
+        )
         return ApiResponse.success(
-            fileUploader.uploadFile(
-                resourceType = ResourceType.RECORD,
-                file = file,
-            ).url,
+            StorageServe.CDN + uploadResult.path,
         )
     }
 
     @PostMapping("/api/v1/records")
     fun addRecord(
-        coupleUser: CoupleUser,
-        @RequestBody request: com.wheon.ourrecord.core.api.controller.v1.request.AddRecordRequest,
+        user: User,
+        @RequestBody request: AddRecordRequest,
     ): ApiResponse<Long> {
         val recordId = recordService.create(
-            coupleUser = coupleUser,
+            user = user,
+            spaceId = 1L,
             target = request.toTarget(),
             content = request.toContent(),
             media = request.toMedia(),

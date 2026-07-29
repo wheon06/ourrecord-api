@@ -4,8 +4,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "couple")
-class CoupleEntity(
-    val ownerUserId: Long,
-    val partnerUserId: Long,
+@Table(name = "space")
+class SpaceEntity(
+    val userId: Long,
 ) : BaseEntity()

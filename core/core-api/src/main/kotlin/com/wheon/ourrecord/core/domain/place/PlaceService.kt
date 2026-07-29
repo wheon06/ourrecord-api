@@ -7,6 +7,5 @@ import org.springframework.stereotype.Service
 class PlaceService(
     private val couplePlaceManager: CouplePlaceManager,
     private val couplePlaceReader: CouplePlaceReader,
-    private val placeCategoryReader: PlaceCategoryReader,
     private val recordReader: RecordReader,
 )
