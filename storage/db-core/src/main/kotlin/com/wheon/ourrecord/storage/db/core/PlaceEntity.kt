@@ -8,6 +8,8 @@ import java.math.BigDecimal
 @Entity
 @Table(name = "place")
 class PlaceEntity(
+    val userId: Long,
+    val spaceId: Long,
     val name: String,
     val address: String,
     val roadAddress: String?,
@@ -15,5 +17,5 @@ class PlaceEntity(
     val latitude: BigDecimal,
     @Column(nullable = false, precision = 9, scale = 6)
     val longitude: BigDecimal,
-    val geoHash: String,
+    val externalPlaceId: String,
 ) : BaseEntity()

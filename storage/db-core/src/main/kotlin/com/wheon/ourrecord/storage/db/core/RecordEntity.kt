@@ -8,8 +8,8 @@ import java.time.LocalDate
 @Table(name = "record")
 class RecordEntity(
     val spaceId: Long,
-    val spaceMemberId: Long,
-    val spacePlaceId: Long,
+    val memberId: Long,
+    val placeId: Long,
     val title: String,
     val content: String,
     val visitedOn: LocalDate,

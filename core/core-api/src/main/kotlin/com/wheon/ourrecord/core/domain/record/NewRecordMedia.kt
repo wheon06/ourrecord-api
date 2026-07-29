@@ -9,14 +9,14 @@ data class NewRecordMedia(
     val resourceType: ResourceType,
     val url: String,
 ) {
-    private val mediaUrlPrefix = "${StorageServe.CDN}/${StorageServe.BUCKET}/"
+    private val mediaUrlPrefix = StorageServe.CDN + StorageServe.BUCKET
 
     init {
         if (!url.startsWith(mediaUrlPrefix)) {
             throw CoreException(ErrorType.RECORD_BAD_IMAGE)
         }
 
-        val resourceName = url.removePrefix(mediaUrlPrefix).substringBefore("/")
+        val resourceName = url.removePrefix(mediaUrlPrefix).split("/")[1]
         if (resourceName != resourceType.resourceName) {
             throw CoreException(ErrorType.RECORD_BAD_IMAGE)
         }

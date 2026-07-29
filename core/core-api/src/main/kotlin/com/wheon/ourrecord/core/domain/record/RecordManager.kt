@@ -23,8 +23,8 @@ class RecordManager(
         val savedRecord = recordRepository.save(
             RecordEntity(
                 spaceId = context.spaceId,
-                spaceMemberId = context.memberId,
-                spacePlaceId = target.targetId,
+                memberId = context.memberId,
+                placeId = target.targetId,
                 title = content.title,
                 content = content.content,
                 visitedOn = content.visitedOn,
