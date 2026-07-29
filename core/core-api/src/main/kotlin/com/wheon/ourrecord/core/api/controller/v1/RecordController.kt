@@ -1,8 +1,8 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
+import com.wheon.ourrecord.core.api.assembler.RecordAssembler
 import com.wheon.ourrecord.core.api.controller.v1.request.AddRecordRequest
 import com.wheon.ourrecord.core.domain.record.RecordImageValidator
-import com.wheon.ourrecord.core.domain.record.RecordService
 import com.wheon.ourrecord.core.domain.user.User
 import com.wheon.ourrecord.core.enums.ResourceType
 import com.wheon.ourrecord.core.support.file.FileUploader
@@ -17,9 +17,9 @@ import org.springframework.web.multipart.MultipartFile
 
 @RestController
 class RecordController(
-    private val recordService: RecordService,
-    private val fileUploader: FileUploader,
+    private val recordAssembler: RecordAssembler,
     private val recordImageValidator: RecordImageValidator,
+    private val fileUploader: FileUploader,
 ) {
     @PostMapping(
         value = ["/api/v1/records/upload/picture"],
@@ -45,13 +45,12 @@ class RecordController(
         user: User,
         @RequestBody request: AddRecordRequest,
     ): ApiResponse<Long> {
-        val recordId = recordService.create(
+        val successId = recordAssembler.addRecord(
             user = user,
-            spaceId = 1L,
             target = request.toTarget(),
             content = request.toContent(),
             media = request.toMedia(),
         )
-        return ApiResponse.success(recordId)
+        return ApiResponse.success(successId)
     }
 }
