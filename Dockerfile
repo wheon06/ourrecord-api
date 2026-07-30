@@ -19,6 +19,7 @@ RUN mkdir -p core/core-enum
 RUN ./gradlew dependencies --no-daemon
 
 COPY .editorconfig .editorconfig
+COPY support support
 COPY clients clients
 COPY core/core-enum core/core-enum
 COPY storage storage
