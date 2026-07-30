@@ -1,6 +1,5 @@
 package com.wheon.ourrecord.core.domain.space
 
-import com.wheon.ourrecord.core.domain.member.MemberProfile
 import com.wheon.ourrecord.core.domain.member.MemberProfileGenerator
 import com.wheon.ourrecord.core.enums.EntityStatus
 import com.wheon.ourrecord.core.enums.SpaceInviteState
@@ -23,12 +22,13 @@ class SpaceInviteManager(
     private val memberRepository: MemberRepository,
 ) {
     @Transactional
-    fun create(userId: Long, profile: MemberProfile): String {
+    fun create(userId: Long): String {
         val savedSpace = spaceRepository.save(
             SpaceEntity(
                 userId = userId,
             ),
         )
+        val profile = MemberProfileGenerator.generate()
         memberRepository.save(
             MemberEntity(
                 userId = userId,

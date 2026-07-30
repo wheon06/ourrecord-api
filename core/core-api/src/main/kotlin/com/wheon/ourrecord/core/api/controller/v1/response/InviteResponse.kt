@@ -1,9 +1,8 @@
-package com.wheon.ourrecord.core.domain.space
+package com.wheon.ourrecord.core.api.controller.v1.response
 
 import com.wheon.ourrecord.core.enums.SpaceInviteState
 
-data class SpaceInvite(
+data class InviteResponse(
     val inviteKey: String,
-    val userId: Long,
     val state: SpaceInviteState,
 )

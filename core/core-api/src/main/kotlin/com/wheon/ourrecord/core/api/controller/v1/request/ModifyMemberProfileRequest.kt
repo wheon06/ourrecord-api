@@ -4,7 +4,7 @@ import com.wheon.ourrecord.core.domain.member.MemberProfile
 import com.wheon.ourrecord.core.support.error.CoreException
 import com.wheon.ourrecord.core.support.error.ErrorType
 
-data class CreateSpaceInviteRequest(
+data class ModifyMemberProfileRequest(
     val nickname: String,
     val emoji: String,
 ) {

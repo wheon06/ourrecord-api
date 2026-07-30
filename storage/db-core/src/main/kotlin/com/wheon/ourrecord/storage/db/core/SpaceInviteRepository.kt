@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface SpaceInviteRepository : JpaRepository<SpaceInviteEntity, Long> {
     fun findByInviteKey(inviteKey: String): SpaceInviteEntity?
+    fun findByUserId(userId: Long): SpaceInviteEntity?
 }

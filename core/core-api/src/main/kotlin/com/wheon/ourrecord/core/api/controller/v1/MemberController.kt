@@ -1,10 +1,13 @@
 package com.wheon.ourrecord.core.api.controller.v1
 
+import com.wheon.ourrecord.core.api.controller.v1.request.ModifyMemberProfileRequest
 import com.wheon.ourrecord.core.api.controller.v1.response.MemberProfileResponse
 import com.wheon.ourrecord.core.domain.member.MemberService
 import com.wheon.ourrecord.core.domain.user.User
 import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -17,5 +20,14 @@ class MemberController(
         return ApiResponse.success(
             MemberProfileResponse.of(member),
         )
+    }
+
+    @PutMapping("/api/v1/member-profiles/my")
+    fun updateMyMemberProfiles(
+        user: User,
+        @RequestBody request: ModifyMemberProfileRequest,
+    ): ApiResponse<Long> {
+        val successId = memberService.updateProfile(user, request.toMemberProfile())
+        return ApiResponse.success(successId)
     }
 }
