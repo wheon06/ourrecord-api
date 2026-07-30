@@ -27,7 +27,7 @@ COPY core/core-api core/core-api
 
 RUN ./gradlew build -x test --no-daemon
 
-RUN java -Djarmode=tools -jar ourrecord-api/build/libs/*.jar extract --layers --launcher --destination extracted
+RUN java -Djarmode=tools -jar core/core-api/build/libs/*.jar extract --layers --launcher --destination extracted
 
 # Run stage
 FROM bellsoft/liberica-openjdk-alpine:21
