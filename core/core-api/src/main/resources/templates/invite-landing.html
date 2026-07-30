@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Our Record 초대장</title>
+  <!--
+    초대 랜딩 페이지 — GET /invite/{code} 에서 서빙.
+    서버는 아래 두 플레이스홀더만 치환하면 된다:
+      {{INVITER_NAME}} : 초대한 사람 닉네임 (예: 희연)
+      {{INVITE_CODE}}  : 초대 코드
+    동작:
+      1) 페이지 진입 시 커스텀 스킴(ourrecord://invite/{code})으로 앱 열기 시도
+         (앱 설치 + 카톡 인앱브라우저처럼 유니버설 링크가 무시된 환경 대응)
+      2) 앱이 안 열리면 이 페이지가 남음 → [앱에서 열기] / 코드 복사 / 앱스토어 안내
+  -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --accent: #FF375F;
+      --accent-soft: #FFF0F3;
+      --text-primary: #191F28;
+      --text-secondary: #4E5969;
+      --text-tertiary: #8B95A1;
+      --fill: #F2F4F6;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+      background: var(--accent-soft);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 44px 28px 28px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(255, 55, 95, 0.12);
+    }
+    .emoji { font-size: 56px; }
+    h1 {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .sub {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 28px;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      margin-top: 10px;
+      background: var(--fill);
+      color: var(--text-secondary);
+    }
+    .hint {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      line-height: 1.6;
+    }
+    .copied { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">💌</div>
+    <h1>{{INVITER_NAME}}님이<br>초대장을 보냈어요</h1>
+    <p class="sub">Our Record에서 함께한 순간을<br>지도 위에 기록해보세요</p>
+
+    <button class="btn" onclick="openApp()">앱에서 초대 수락하기</button>
+    <button class="btn btn-secondary" id="copyBtn" onclick="copyLink()">초대 링크 복사하기</button>
+
+    <p class="hint">
+      앱이 없다면 App Store에서 <b>Our Record</b>를 설치한 뒤,<br>
+      복사한 링크를 앱에서 붙여넣어 주세요
+    </p>
+  </div>
+
+  <script>
+    var INVITE_CODE = "{{INVITE_CODE}}";
+    var APP_SCHEME_URL = "ourrecord://invite/" + INVITE_CODE;
+    var UNIVERSAL_URL = "https://ourrecord.duckdns.org/invite/" + INVITE_CODE;
+
+    function openApp() {
+      // 커스텀 스킴으로 앱 열기 시도 — 설치돼 있으면 앱으로 전환된다
+      window.location.href = APP_SCHEME_URL;
+      // TODO: 앱스토어 출시 후 아래 주석 해제 (미설치 시 스토어로 유도)
+      // setTimeout(function () {
+      //   window.location.href = "https://apps.apple.com/app/idXXXXXXXXX";
+      // }, 1500);
+    }
+
+    function copyLink() {
+      var btn = document.getElementById("copyBtn");
+      navigator.clipboard.writeText(UNIVERSAL_URL).then(function () {
+        btn.textContent = "복사됐어요!";
+        btn.classList.add("copied");
+        setTimeout(function () {
+          btn.textContent = "초대 링크 복사하기";
+          btn.classList.remove("copied");
+        }, 2000);
+      });
+    }
+
+    // 진입 즉시 앱 열기 1회 시도 (설치된 유저는 바로 앱으로)
+    openApp();
+  </script>
+</body>
+</html>
