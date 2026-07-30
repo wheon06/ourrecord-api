@@ -4,6 +4,6 @@ import com.wheon.ourrecord.storage.db.core.RecordMediaRepository
 import org.springframework.stereotype.Component
 
 @Component
-class RecordMediaReader(
+class RecordMediaFinder(
     private val recordMediaRepository: RecordMediaRepository,
 )

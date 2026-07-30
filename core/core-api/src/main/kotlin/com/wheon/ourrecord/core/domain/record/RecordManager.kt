@@ -19,7 +19,7 @@ class RecordManager(
         target: RecordTarget,
         content: RecordContent,
         media: List<NewRecordMedia>,
-    ): Long {
+    ): Record {
         val savedRecord = recordRepository.save(
             RecordEntity(
                 spaceId = context.spaceId,
@@ -31,7 +31,7 @@ class RecordManager(
             ),
         )
 
-        recordMediaRepository.saveAll(
+        val savedMedia = recordMediaRepository.saveAll(
             media.map {
                 RecordMediaEntity(
                     recordId = savedRecord.id,
@@ -41,6 +41,10 @@ class RecordManager(
             },
         )
 
-        return savedRecord.id
+        return Record(
+            id = savedRecord.id,
+            placeId = savedRecord.placeId,
+            thumbnailUrl = savedMedia.first().mediaUrl,
+        )
     }
 }

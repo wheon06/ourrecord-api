@@ -7,6 +7,7 @@ data class Place(
     val name: String,
     val address: String,
     val roadAddress: String?,
+    val thumbnailUrl: String,
     val longitude: BigDecimal,
     val latitude: BigDecimal,
 )

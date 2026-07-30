@@ -9,8 +9,10 @@ import com.wheon.ourrecord.core.support.file.FileUploader
 import com.wheon.ourrecord.core.support.file.StorageServe
 import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
@@ -52,5 +54,14 @@ class RecordController(
             media = request.toMedia(),
         )
         return ApiResponse.success(successId)
+    }
+
+    @GetMapping("/api/v1/records")
+    fun getRecords(
+        user: User,
+        @RequestParam lastRecordId: Long?,
+    ) {
+//        recordAssembler.getRecords(user, lastRecordId)
+        return
     }
 }

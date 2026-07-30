@@ -13,9 +13,17 @@ class PlaceEntity(
     val name: String,
     val address: String,
     val roadAddress: String?,
+    thumbnailUrl: String,
     @Column(nullable = false, precision = 9, scale = 6)
     val latitude: BigDecimal,
     @Column(nullable = false, precision = 9, scale = 6)
     val longitude: BigDecimal,
     val externalPlaceId: String,
-) : BaseEntity()
+) : BaseEntity() {
+    var thumbnailUrl: String = thumbnailUrl
+        protected set
+
+    fun applyThumbnailUrl(thumbnailUrl: String) {
+        this.thumbnailUrl = thumbnailUrl
+    }
+}
