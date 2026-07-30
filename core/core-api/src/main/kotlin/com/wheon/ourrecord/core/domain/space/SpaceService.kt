@@ -11,4 +11,8 @@ class SpaceService(
     fun createInvite(user: User, profile: MemberProfile): String {
         return spaceInviteManager.create(user.id, profile)
     }
+
+    fun acceptInvite(user: User, inviteKey: String) {
+        spaceInviteManager.accept(user.id, inviteKey)
+    }
 }

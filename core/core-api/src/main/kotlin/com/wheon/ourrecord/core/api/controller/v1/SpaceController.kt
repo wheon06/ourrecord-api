@@ -7,6 +7,7 @@ import com.wheon.ourrecord.core.domain.space.SpaceService
 import com.wheon.ourrecord.core.domain.user.User
 import com.wheon.ourrecord.core.support.response.ApiResponse
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -30,5 +31,14 @@ class SpaceController(
     ): ApiResponse<String> {
         val inviteKey = spaceService.createInvite(user, request.toMemberProfile())
         return ApiResponse.success(inviteKey)
+    }
+
+    @PostMapping("/api/v1/space-invites/{inviteKey}")
+    fun acceptInvite(
+        user: User,
+        @PathVariable inviteKey: String,
+    ): ApiResponse<Any> {
+        spaceService.acceptInvite(user, inviteKey)
+        return ApiResponse.success()
     }
 }
