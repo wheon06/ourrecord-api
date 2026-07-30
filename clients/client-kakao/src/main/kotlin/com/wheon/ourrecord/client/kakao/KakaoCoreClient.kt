@@ -10,7 +10,7 @@ class KakaoCoreClient internal constructor(
     fun getProfile(accessToken: String): KakaoClientProfileResult {
         return kakaoCoreApi.getProfile(
             "Bearer $accessToken",
-            "[\"kakao_account.name\"]",
+            "[\"kakao_account.email\"]",
         ).toResult()
     }
 }

@@ -1,6 +1,5 @@
 package com.wheon.ourrecord.storage.db.core
 
-import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
 import java.time.LocalDateTime
@@ -9,13 +8,10 @@ import java.time.LocalDateTime
 @Table(name = "user_session")
 class UserSessionEntity(
     val userId: Long,
-    @Column(nullable = true)
-    val userDeviceId: Long,
-    val refreshTokenId: String,
-    val refreshTokenHash: String,
+    val userDeviceId: Long? = null,
     val expiresAt: LocalDateTime,
     lastUsedAt: LocalDateTime,
-    revokedAt: LocalDateTime?,
+    revokedAt: LocalDateTime? = null,
 ) : BaseIdEntity() {
     var lastUsedAt: LocalDateTime = lastUsedAt
         protected set

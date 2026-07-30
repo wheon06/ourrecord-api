@@ -1,9 +1,0 @@
-spring:
-  config:
-    import:
-      - client-kakao.yaml
-      - client-naver.yaml
-      - db-core.yaml
-      - db-s3.yml
-      - auth.yaml
-      - firebase.yaml

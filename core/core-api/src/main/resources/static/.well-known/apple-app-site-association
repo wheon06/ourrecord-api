@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8ZJ7CHXMW2.com.wheon.ourrecord"],
+        "components": [
+          {
+            "/": "/invite/*",
+            "comment": "초대 링크 - 앱에서 처리"
+          }
+        ]
+      }
+    ]
+  }
+}

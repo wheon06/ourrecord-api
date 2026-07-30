@@ -1,0 +1,11 @@
+spring.profiles.active: default
+
+spring:
+  config:
+    import:
+      - client-kakao.yml
+      - client-naver.yml
+      - db-core.yml
+      - db-s3.yml
+      - firebase.yml
+      - logging.yml
