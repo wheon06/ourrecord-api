@@ -1,5 +1,6 @@
 package com.wheon.ourrecord.storage.db.core
 
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
@@ -8,5 +9,6 @@ import jakarta.persistence.Table
 class RecordMediaEntity(
     val recordId: Long,
     val spaceId: Long,
+    @Column(columnDefinition = "TEXT")
     val mediaUrl: String,
 ) : BaseEntity()

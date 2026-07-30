@@ -20,6 +20,7 @@ class PlaceEntity(
     val longitude: BigDecimal,
     val externalPlaceId: String,
 ) : BaseEntity() {
+    @Column(columnDefinition = "TEXT")
     var thumbnailUrl: String = thumbnailUrl
         protected set
 
