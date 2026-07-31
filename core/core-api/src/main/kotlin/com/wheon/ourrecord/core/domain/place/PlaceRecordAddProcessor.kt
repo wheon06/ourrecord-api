@@ -19,6 +19,9 @@ class PlaceRecordAddProcessor(
         placeRepository.findByIdAndStatus(record.placeId, EntityStatus.ACTIVE)
             ?.applyThumbnailUrl(record.thumbnailUrl)
         metaPlaceRepository.findByPlaceIdAndStatus(record.placeId, EntityStatus.ACTIVE)
-            ?.let { it.applyRecordCount(it.recordCount + 1) }
+            ?.let {
+                it.applyRecordCount(it.recordCount + 1)
+                it.applyLastVisitedAt(record.visitedOn)
+            }
     }
 }

@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface MetaPlaceRepository : JpaRepository<MetaPlaceEntity, Long> {
     fun findByPlaceIdIn(placeIds: List<Long>): List<MetaPlaceEntity>
     fun findByPlaceIdAndStatus(placeId: Long, status: EntityStatus): MetaPlaceEntity?
-    fun findBySpaceIdAndStatusOrderByLastRecordedAtDesc(spaceId: Long, status: EntityStatus, pageable: Pageable): Slice<MetaPlaceEntity>
+    fun findBySpaceIdAndStatusOrderByLastVisitedAtDesc(spaceId: Long, status: EntityStatus, pageable: Pageable): Slice<MetaPlaceEntity>
 }

@@ -13,7 +13,7 @@ class PlaceFinder(
     private val metaPlaceRepository: MetaPlaceRepository,
 ) {
     fun find(spaceId: Long, offsetLimit: OffsetLimit): Page<Place> {
-        val result = metaPlaceRepository.findBySpaceIdAndStatusOrderByLastRecordedAtDesc(spaceId, EntityStatus.ACTIVE, offsetLimit.toPageable())
+        val result = metaPlaceRepository.findBySpaceIdAndStatusOrderByLastVisitedAtDesc(spaceId, EntityStatus.ACTIVE, offsetLimit.toPageable())
         val places = placeRepository.findByIdIn(result.content.map { it.placeId }).map {
             Place(
                 id = it.id,

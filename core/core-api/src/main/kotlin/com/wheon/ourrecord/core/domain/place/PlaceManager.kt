@@ -7,6 +7,7 @@ import com.wheon.ourrecord.storage.db.core.PlaceEntity
 import com.wheon.ourrecord.storage.db.core.PlaceRepository
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDate
 
 @Component
 class PlaceManager(
@@ -38,7 +39,7 @@ class PlaceManager(
                     spaceId = spaceId,
                     placeId = savedPlace.id,
                     recordCount = 0,
-                    lastRecordedAt = savedPlace.createdAt,
+                    lastVisitedAt = LocalDate.now(),
                 ),
             )
 

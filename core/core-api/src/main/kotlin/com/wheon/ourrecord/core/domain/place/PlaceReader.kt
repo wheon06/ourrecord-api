@@ -12,7 +12,7 @@ class PlaceReader(
             MetaPlace(
                 placeId = it.placeId,
                 recordCount = it.recordCount,
-                lastRecordedAt = it.lastRecordedAt,
+                lastVisitedAt = it.lastVisitedAt,
             )
         }
         return metas.associateBy { it.placeId }

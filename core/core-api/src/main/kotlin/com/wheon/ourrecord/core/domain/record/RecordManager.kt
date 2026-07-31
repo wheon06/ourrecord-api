@@ -45,6 +45,7 @@ class RecordManager(
             id = savedRecord.id,
             placeId = savedRecord.placeId,
             thumbnailUrl = savedMedia.first().mediaUrl,
+            visitedOn = savedRecord.visitedOn,
         )
     }
 }
