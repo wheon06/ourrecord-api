@@ -54,6 +54,7 @@ class SpaceInviteManager(
     fun accept(userId: Long, inviteKey: String) {
         val invite = spaceInviteRepository.findByInviteKey(inviteKey) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
         if (invite.state != SpaceInviteState.PENDING) throw CoreException(ErrorType.INVITE_STATE_INVALID)
+        if (invite.userId == userId) throw CoreException(ErrorType.INVALID_INVITE_KEY)
         spaceRepository.findByIdAndStatus(invite.spaceId, EntityStatus.ACTIVE) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
 
         invite.accepted()
@@ -62,7 +63,7 @@ class SpaceInviteManager(
         memberRepository.save(
             MemberEntity(
                 userId = userId,
-                spaceId = invite.userId,
+                spaceId = invite.spaceId,
                 nickname = profile.nickname,
                 emoji = profile.emoji,
             ),
