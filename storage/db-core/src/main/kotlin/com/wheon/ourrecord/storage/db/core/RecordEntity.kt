@@ -24,16 +24,10 @@ class RecordEntity(
     var thumbnailUrl: String = thumbnailUrl
         protected set
 
-    fun applyTitle(title: String) {
+    fun updateContent(title: String, content: String, visitedOn: LocalDate) {
         this.title = title
-    }
-
-    fun applyContent(content: String) {
         this.content = content
-    }
-
-    fun applyVisitedOn(date: LocalDate) {
-        this.visitedOn = date
+        this.visitedOn = visitedOn
     }
 
     fun applyThumbnailUrl(thumbnailUrl: String) {

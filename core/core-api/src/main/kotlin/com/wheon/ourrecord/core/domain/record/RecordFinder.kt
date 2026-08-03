@@ -1,5 +1,6 @@
 package com.wheon.ourrecord.core.domain.record
 
+import com.wheon.ourrecord.core.enums.EntityStatus
 import com.wheon.ourrecord.core.support.OffsetLimit
 import com.wheon.ourrecord.core.support.Page
 import com.wheon.ourrecord.storage.db.core.RecordRepository
@@ -10,9 +11,10 @@ class RecordFinder(
     private val recordRepository: RecordRepository,
 ) {
     fun find(spaceId: Long, placeId: Long, offsetLimit: OffsetLimit): Page<Record> {
-        val result = recordRepository.findBySpaceIdAndPlaceIdOrderByVisitedOnDesc(
+        val result = recordRepository.findBySpaceIdAndPlaceIdAndStatusOrderByVisitedOnDesc(
             spaceId = spaceId,
             placeId = placeId,
+            status = EntityStatus.ACTIVE,
             pageable = offsetLimit.toPageable(),
         )
         val records = result.map {

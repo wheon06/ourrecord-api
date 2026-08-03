@@ -8,7 +8,7 @@ class RecordMediaReader(
     private val recordMediaRepository: RecordMediaRepository,
 ) {
     fun readMediaMap(records: List<Record>): Map<Long, List<RecordMedia>> {
-        return recordMediaRepository.findByRecordIdIn(records.map { it.id })
+        return recordMediaRepository.findByRecordIdIn(records.map { it.id }).filter { it.isActive() }
             .map {
                 RecordMedia(
                     id = it.recordId,

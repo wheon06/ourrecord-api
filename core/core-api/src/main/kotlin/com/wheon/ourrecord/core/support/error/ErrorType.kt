@@ -20,4 +20,5 @@ enum class ErrorType(val status: HttpStatus, val message: String, val logLevel: 
 
     RECORD_IMAGE_INVALID(HttpStatus.BAD_REQUEST, "업로드 할 수 없는 사진입니다.", LogLevel.INFO),
     RECORD_BAD_IMAGE(HttpStatus.BAD_REQUEST, "사용할 수 없는 이미지입니다.", LogLevel.INFO),
+    RECORD_CANNOT_DELETE_ALL_IMAGES(HttpStatus.BAD_REQUEST, "이미지를 모두 삭제할 수 없습니다.", LogLevel.INFO),
 }
