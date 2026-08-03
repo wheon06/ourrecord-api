@@ -10,8 +10,33 @@ class RecordEntity(
     val spaceId: Long,
     val memberId: Long,
     val placeId: Long,
-    val title: String,
-    val content: String,
-    val visitedOn: LocalDate,
-    val thumbnailUrl: String,
-) : BaseEntity()
+    title: String,
+    content: String,
+    visitedOn: LocalDate,
+    thumbnailUrl: String,
+) : BaseEntity() {
+    var title: String = title
+        protected set
+    var content: String = content
+        protected set
+    var visitedOn: LocalDate = visitedOn
+        protected set
+    var thumbnailUrl: String = thumbnailUrl
+        protected set
+
+    fun applyTitle(title: String) {
+        this.title = title
+    }
+
+    fun applyContent(content: String) {
+        this.content = content
+    }
+
+    fun applyVisitedOn(date: LocalDate) {
+        this.visitedOn = date
+    }
+
+    fun applyThumbnailUrl(thumbnailUrl: String) {
+        this.thumbnailUrl = thumbnailUrl
+    }
+}
