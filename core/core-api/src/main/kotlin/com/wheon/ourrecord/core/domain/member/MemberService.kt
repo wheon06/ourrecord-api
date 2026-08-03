@@ -12,6 +12,10 @@ class MemberService(
         return memberFinder.find(user.id)
     }
 
+    fun getSpaceMembers(spaceId: Long): List<Member> {
+        return memberFinder.findSpaceMembers(spaceId)
+    }
+
     fun updateProfile(user: User, memberProfile: MemberProfile): Long {
         val member = memberFinder.find(user.id)
         return memberManager.updateProfile(member.id, memberProfile)

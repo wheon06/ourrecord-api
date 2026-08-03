@@ -25,6 +25,7 @@ class RecordManager(
                 spaceId = context.spaceId,
                 memberId = context.memberId,
                 placeId = target.targetId,
+                thumbnailUrl = media.first().url,
                 title = content.title,
                 content = content.content,
                 visitedOn = content.visitedOn,
@@ -43,8 +44,11 @@ class RecordManager(
 
         return Record(
             id = savedRecord.id,
+            memberId = savedRecord.memberId,
             placeId = savedRecord.placeId,
             thumbnailUrl = savedMedia.first().mediaUrl,
+            title = savedRecord.title,
+            content = savedRecord.content,
             visitedOn = savedRecord.visitedOn,
         )
     }

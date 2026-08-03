@@ -13,4 +13,5 @@ class RecordEntity(
     val title: String,
     val content: String,
     val visitedOn: LocalDate,
+    val thumbnailUrl: String,
 ) : BaseEntity()

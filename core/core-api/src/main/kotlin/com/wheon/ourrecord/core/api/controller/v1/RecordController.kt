@@ -2,12 +2,15 @@ package com.wheon.ourrecord.core.api.controller.v1
 
 import com.wheon.ourrecord.core.api.assembler.RecordAssembler
 import com.wheon.ourrecord.core.api.controller.v1.request.AddRecordRequest
+import com.wheon.ourrecord.core.api.controller.v1.response.RecordResponse
 import com.wheon.ourrecord.core.domain.record.RecordImageValidator
 import com.wheon.ourrecord.core.domain.user.User
 import com.wheon.ourrecord.core.enums.ResourceType
+import com.wheon.ourrecord.core.support.OffsetLimit
 import com.wheon.ourrecord.core.support.file.FileUploader
 import com.wheon.ourrecord.core.support.file.StorageServe
 import com.wheon.ourrecord.core.support.response.ApiResponse
+import com.wheon.ourrecord.core.support.response.PageResponse
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -59,9 +62,11 @@ class RecordController(
     @GetMapping("/api/v1/records")
     fun getRecords(
         user: User,
-        @RequestParam lastRecordId: Long?,
-    ) {
-//        recordAssembler.getRecords(user, lastRecordId)
-        return
+        @RequestParam placeId: Long,
+        @RequestParam offset: Int?,
+        @RequestParam limit: Int?,
+    ): ApiResponse<PageResponse<RecordResponse>> {
+        val responses = recordAssembler.getRecords(user, placeId, OffsetLimit(offset, limit))
+        return ApiResponse.success(responses)
     }
 }

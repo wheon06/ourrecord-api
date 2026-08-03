@@ -21,4 +21,16 @@ class MemberFinder(
             emoji = member.emoji,
         )
     }
+
+    fun findSpaceMembers(spaceId: Long): List<Member> {
+        return memberRepository.findBySpaceIdAndStatus(spaceId, EntityStatus.ACTIVE).map {
+            Member(
+                id = it.id,
+                spaceId = it.spaceId,
+                userId = it.userId,
+                nickname = it.nickname,
+                emoji = it.emoji,
+            )
+        }
+    }
 }

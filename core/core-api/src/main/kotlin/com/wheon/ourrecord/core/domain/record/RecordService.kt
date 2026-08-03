@@ -2,6 +2,7 @@ package com.wheon.ourrecord.core.domain.record
 
 import com.wheon.ourrecord.core.domain.space.SpaceVerifier
 import com.wheon.ourrecord.core.domain.user.User
+import com.wheon.ourrecord.core.support.OffsetLimit
 import com.wheon.ourrecord.core.support.Page
 import org.springframework.stereotype.Service
 
@@ -11,6 +12,7 @@ class RecordService(
     private val recordManager: RecordManager,
     private val spaceVerifier: SpaceVerifier,
     private val recordAddPostProcessor: List<RecordAddPostProcess>,
+    private val recordMediaReader: RecordMediaReader,
 ) {
     fun create(
         user: User,
@@ -30,7 +32,11 @@ class RecordService(
         return record.id
     }
 
-    fun getRecords(spaceId: Long, lastRecordId: Long?): Page<Record> {
-        return recordFinder.find(spaceId, lastRecordId)
+    fun getRecords(spaceId: Long, placeId: Long, offsetLimit: OffsetLimit): Page<Record> {
+        return recordFinder.find(spaceId, placeId, offsetLimit)
+    }
+
+    fun findRecordMedia(records: List<Record>): Map<Long, List<RecordMedia>> {
+        return recordMediaReader.readMediaMap(records)
     }
 }
