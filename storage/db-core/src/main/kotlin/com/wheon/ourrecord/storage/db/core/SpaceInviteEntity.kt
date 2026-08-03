@@ -27,4 +27,8 @@ class SpaceInviteEntity(
     fun accepted() {
         state = SpaceInviteState.ACCEPTED
     }
+
+    fun expired() {
+        state = SpaceInviteState.EXPIRED
+    }
 }

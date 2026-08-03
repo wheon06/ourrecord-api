@@ -59,6 +59,13 @@ class SpaceInviteManager(
 
         invite.accepted()
 
+        // 수락한 사용자 소유의 기존 공간은 삭제 처리
+        spaceInviteRepository.findByUserId(userId)?.let {
+            it.expired()
+            spaceRepository.findByIdAndStatus(it.spaceId, EntityStatus.ACTIVE)?.delete()
+            memberRepository.findByUserIdAndStatus(userId, EntityStatus.ACTIVE)?.delete()
+        }
+
         val profile = MemberProfileGenerator.generate()
         memberRepository.save(
             MemberEntity(
