@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component
 class PlaceReader(
     private val metaPlaceRepository: MetaPlaceRepository,
 ) {
-    fun readMetaMap(places: List<Place>): Map<Long, MetaPlace> {
-        val metas = metaPlaceRepository.findByPlaceIdIn(places.map { it.id }).map {
+    fun readMetaMap(spaceId: Long, places: List<Place>): Map<Long, MetaPlace> {
+        val metas = metaPlaceRepository.findBySpaceIdAndPlaceIdIn(spaceId, places.map { it.id }).map {
             MetaPlace(
                 placeId = it.placeId,
                 recordCount = it.recordCount,

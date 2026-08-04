@@ -3,6 +3,7 @@ package com.wheon.ourrecord.core.api.controller.v1
 import com.wheon.ourrecord.client.kakao.KakaoMapClient
 import com.wheon.ourrecord.core.api.assembler.PlaceAssembler
 import com.wheon.ourrecord.core.api.controller.v1.request.AddPlaceRequest
+import com.wheon.ourrecord.core.api.controller.v1.response.MarkerResponse
 import com.wheon.ourrecord.core.api.controller.v1.response.PlaceResponse
 import com.wheon.ourrecord.core.api.controller.v1.response.PlaceSearchResultResponse
 import com.wheon.ourrecord.core.domain.user.User
@@ -20,6 +21,24 @@ class PlaceController(
     private val placeAssembler: PlaceAssembler,
     private val kakaoMapClient: KakaoMapClient,
 ) {
+    @GetMapping("/api/v1/places")
+    fun getPlaces(
+        user: User,
+        @RequestParam offset: Int?,
+        @RequestParam limit: Int?,
+    ): ApiResponse<PageResponse<PlaceResponse>> {
+        val responses = placeAssembler.getPlaces(user, OffsetLimit(offset, limit))
+        return ApiResponse.success(responses)
+    }
+
+    @GetMapping("/api/v1/places/markers")
+    fun getMarkers(
+        user: User,
+    ): ApiResponse<List<MarkerResponse>> {
+        val responses = placeAssembler.getMarkers(user)
+        return ApiResponse.success(responses)
+    }
+
     @PostMapping("/api/v1/places/search")
     fun searchPlace(
         user: User,
@@ -38,15 +57,5 @@ class PlaceController(
     ): ApiResponse<Long> {
         val successId = placeAssembler.addPlace(user, request.toNewPlace())
         return ApiResponse.success(successId)
-    }
-
-    @GetMapping("/api/v1/places")
-    fun getPlaces(
-        user: User,
-        @RequestParam offset: Int?,
-        @RequestParam limit: Int?,
-    ): ApiResponse<PageResponse<PlaceResponse>> {
-        val responses = placeAssembler.getPlaces(user, OffsetLimit(offset, limit))
-        return ApiResponse.success(responses)
     }
 }

@@ -19,7 +19,7 @@ class PlaceService(
         return placeFinder.find(spaceId, offsetLimit)
     }
 
-    fun readMetaMap(places: List<Place>): Map<Long, MetaPlace> {
-        return placeReader.readMetaMap(places)
+    fun readMetaMap(spaceId: Long, places: List<Place>): Map<Long, MetaPlace> {
+        return placeReader.readMetaMap(spaceId, places)
     }
 }
