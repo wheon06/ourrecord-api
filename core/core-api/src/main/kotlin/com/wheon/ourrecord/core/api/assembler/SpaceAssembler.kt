@@ -1,23 +1,25 @@
 package com.wheon.ourrecord.core.api.assembler
 
 import com.wheon.ourrecord.core.api.controller.v1.response.InviteCheckoutResponse
-import com.wheon.ourrecord.core.api.controller.v1.response.MeResponse
+import com.wheon.ourrecord.core.api.controller.v1.response.SpaceMeResponse
 import com.wheon.ourrecord.core.domain.member.MemberService
 import com.wheon.ourrecord.core.domain.space.SpaceService
 import com.wheon.ourrecord.core.domain.user.User
-import com.wheon.ourrecord.core.enums.EntityStatus
-import com.wheon.ourrecord.storage.db.core.MemberRepository
 import org.springframework.stereotype.Component
 
 @Component
 class SpaceAssembler(
     private val spaceService: SpaceService,
     private val memberService: MemberService,
-    private val memberRepository: MemberRepository,
 ) {
-    fun getMe(user: User): MeResponse {
-        return MeResponse(
-            isOnboarded = memberRepository.findByUserIdAndStatus(user.id, EntityStatus.ACTIVE) != null,
+    fun getMe(user: User): SpaceMeResponse {
+        val member = memberService.getMember(user)
+        val space = spaceService.getSpace(member.spaceId)
+        val members = memberService.getSpaceMembers(member.spaceId)
+        return SpaceMeResponse.of(
+            user = user,
+            space = space,
+            members = members,
         )
     }
 

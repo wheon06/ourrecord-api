@@ -18,7 +18,7 @@ class MemberController(
     fun getMyMemberProfiles(user: User): ApiResponse<MemberProfileResponse> {
         val member = memberService.getMember(user)
         return ApiResponse.success(
-            MemberProfileResponse.of(member),
+            MemberProfileResponse.of(user, member),
         )
     }
 

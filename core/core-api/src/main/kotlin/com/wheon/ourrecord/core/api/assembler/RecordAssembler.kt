@@ -21,7 +21,7 @@ class RecordAssembler(
         val paging = recordService.getRecords(member.spaceId, placeId, offsetLimit)
         val mediaMap = recordService.findRecordMedia(paging.results)
         val memberMap = memberService.getSpaceMembers(member.spaceId).associateBy { it.id }
-        return PageResponse(RecordResponse.of(paging.results, mediaMap, memberMap), paging.hasNext)
+        return PageResponse(RecordResponse.of(user, paging.results, mediaMap, memberMap), paging.hasNext)
     }
 
     fun addRecord(user: User, target: RecordTarget, content: RecordContent, mediaHandle: MediaHandle): Long {

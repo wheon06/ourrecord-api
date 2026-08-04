@@ -3,6 +3,7 @@ package com.wheon.ourrecord.core.api.controller.v1.response
 import com.wheon.ourrecord.core.domain.member.Member
 import com.wheon.ourrecord.core.domain.record.Record
 import com.wheon.ourrecord.core.domain.record.RecordMedia
+import com.wheon.ourrecord.core.domain.user.User
 import java.time.LocalDate
 
 data class RecordResponse(
@@ -15,6 +16,7 @@ data class RecordResponse(
 ) {
     companion object {
         fun of(
+            user: User,
             records: List<Record>,
             mediaMap: Map<Long, List<RecordMedia>>,
             memberMap: Map<Long, Member>,
@@ -32,8 +34,10 @@ data class RecordResponse(
                         )
                     },
                     authorMember = MemberProfileResponse(
+                        memberId = it.memberId,
                         nickname = memberMap[it.memberId]!!.nickname,
                         emoji = memberMap[it.memberId]!!.emoji,
+                        isMe = user.id == it.memberId,
                     ),
                 )
             }

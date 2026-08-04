@@ -26,6 +26,7 @@ class SpaceInviteManager(
         val savedSpace = spaceRepository.save(
             SpaceEntity(
                 userId = userId,
+                anniversaryDate = null,
             ),
         )
         val profile = MemberProfileGenerator.generate()
