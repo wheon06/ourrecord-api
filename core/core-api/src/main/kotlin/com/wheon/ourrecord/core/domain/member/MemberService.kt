@@ -18,6 +18,6 @@ class MemberService(
 
     fun updateProfile(user: User, memberProfile: MemberProfile): Long {
         val member = memberFinder.find(user.id)
-        return memberManager.updateProfile(member.id, memberProfile)
+        return memberManager.updateProfile(member.userId, memberProfile)
     }
 }
