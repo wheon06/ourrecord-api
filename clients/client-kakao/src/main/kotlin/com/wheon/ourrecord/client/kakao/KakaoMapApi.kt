@@ -10,6 +10,6 @@ internal interface KakaoMapApi {
     fun searchPlace(
         @RequestParam query: String,
         @RequestParam page: Int = 1,
-        @RequestParam size: Int = 5,
+        @RequestParam size: Int = 10,
     ): KakaoPlaceResponseDto
 }
